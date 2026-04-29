@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run F1 Project",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/F1_Project",
+      "preLaunchTask": "cmake-build",
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb"
+    }
+  ]
+}
