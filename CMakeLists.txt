@@ -12,7 +12,7 @@ include_directories(/usr/include)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 # 4. De executable bouwen
-add_executable(F1_Project src/main.cpp glad.c)
+add_executable(F1_Project src/main.cpp glad.c src/stb_imageDefinition.cpp)
 
 # 5. Linken aan GLFW en de standaard OpenGL library van Linux
 target_link_libraries(F1_Project glfw GL)
