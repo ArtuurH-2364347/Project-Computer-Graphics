@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I/home/kardia/ComputerGraphics/Project-Computer-Graphics/include
+C_INCLUDES = -I/include -I/home/kardia/ComputerGraphics/Project-Computer-Graphics/include
 
 C_FLAGS = 
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/kardia/ComputerGraphics/Project-Computer-Graphics/include
+CXX_INCLUDES = -I/include -I/home/kardia/ComputerGraphics/Project-Computer-Graphics/include
 
 CXX_FLAGS = -std=gnu++17
 

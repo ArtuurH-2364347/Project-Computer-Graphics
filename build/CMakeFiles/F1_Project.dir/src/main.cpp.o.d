@@ -182,12 +182,26 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: \
  /usr/include/c++/13/tr1/modified_bessel_func.tcc \
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
- /usr/include/c++/13/tr1/riemann_zeta.tcc \
- /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/stb_image/stb_image.h \
- /usr/include/c++/13/stdlib.h \
- /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/glm.hpp \
- /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/_fixes.hpp \
- /usr/include/c++/13/climits \
+ /usr/include/c++/13/tr1/riemann_zeta.tcc /usr/include/c++/13/filesystem \
+ /usr/include/c++/13/bits/fs_fwd.h /usr/include/c++/13/cstdint \
+ /usr/include/c++/13/bits/chrono.h /usr/include/c++/13/ratio \
+ /usr/include/c++/13/ctime /usr/include/c++/13/bits/parse_numbers.h \
+ /usr/include/c++/13/bits/fs_path.h /usr/include/c++/13/locale \
+ /usr/include/c++/13/bits/locale_facets_nonio.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/13/bits/locale_conv.h /usr/include/c++/13/iomanip \
+ /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/codecvt \
+ /usr/include/c++/13/ext/concurrence.h \
+ /usr/include/c++/13/bits/shared_ptr.h \
+ /usr/include/c++/13/bits/shared_ptr_base.h \
+ /usr/include/c++/13/bits/allocated_ptr.h \
+ /usr/include/c++/13/bits/unique_ptr.h \
+ /usr/include/c++/13/ext/aligned_buffer.h \
+ /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/Importer.hpp \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/types.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
@@ -195,7 +209,49 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: \
  /usr/include/linux/limits.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/13/cfloat \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/string.h \
+ /usr/include/strings.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/defs.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/config.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector2.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector3.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/color4.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix3x3.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix4x4.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/quaternion.h \
+ /usr/include/c++/13/cstring \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector2.inl \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector3.inl \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/color4.inl \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix3x3.inl \
+ /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/stl_heap.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/c++/13/bits/stl_tempbuf.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix4x4.inl \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/MathFunctions.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/quaternion.inl \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/scene.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/texture.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/Compiler/pushpack1.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/Compiler/poppack1.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/mesh.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/aabb.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/light.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/camera.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/material.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/material.inl \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/anim.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/metadata.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/postprocess.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/stb_image/stb_image.h \
+ /usr/include/c++/13/stdlib.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/glm.hpp \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/_fixes.hpp \
+ /usr/include/c++/13/climits /usr/include/c++/13/cfloat \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
  /usr/include/c++/13/cassert /usr/include/assert.h \
  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/fwd.hpp \
@@ -206,7 +262,6 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/xmmintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/mmintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/mm_malloc.h \
- /usr/include/c++/13/cstdint \
  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_float.hpp \
  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_vec.hpp \
  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/precision.hpp \
@@ -390,12 +445,17 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: \
  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/../gtc/quaternion.hpp \
  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/../gtc/quaternion.inl \
  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/../gtc/quaternion_simd.inl \
- /usr/include/c++/13/cstring /usr/include/string.h /usr/include/strings.h \
  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/type_ptr.inl \
- /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/../src/shader_s.h \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/../src/shader.h \
  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/../src/camera.h \
  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/../src/mesh.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc
+ /usr/include/c++/13/bits/vector.tcc \
+ /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/../src/model.h \
+ /usr/include/c++/13/map /usr/include/c++/13/bits/stl_tree.h \
+ /usr/include/c++/13/bits/node_handle.h \
+ /usr/include/c++/13/bits/stl_map.h \
+ /usr/include/c++/13/bits/stl_multimap.h \
+ /usr/include/c++/13/bits/erase_if.h

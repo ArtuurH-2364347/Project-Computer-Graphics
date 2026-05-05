@@ -73,8 +73,39 @@ CMakeFiles/F1_Project.dir/glad.c.o: /home/kardia/ComputerGraphics/Project-Comput
 CMakeFiles/F1_Project.dir/src/main.cpp.o: /home/kardia/ComputerGraphics/Project-Computer-Graphics/src/main.cpp \
   /home/kardia/ComputerGraphics/Project-Computer-Graphics/src/camera.h \
   /home/kardia/ComputerGraphics/Project-Computer-Graphics/src/mesh.h \
-  /home/kardia/ComputerGraphics/Project-Computer-Graphics/src/shader_s.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/src/model.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/src/shader.h \
   /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/KHR/khrplatform.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/Compiler/poppack1.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/Compiler/pushpack1.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/Importer.hpp \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/MathFunctions.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/aabb.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/anim.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/camera.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/color4.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/color4.inl \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/config.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/defs.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/light.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/material.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/material.inl \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix3x3.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix3x3.inl \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix4x4.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix4x4.inl \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/mesh.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/metadata.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/postprocess.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/quaternion.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/quaternion.inl \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/scene.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/texture.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/types.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector2.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector2.inl \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector3.h \
+  /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector3.inl \
   /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glad/glad.h \
   /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/common.hpp \
   /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/simd/common.h \
@@ -182,9 +213,12 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: /home/kardia/ComputerGraphics/Project-
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/assert.h \
+  /usr/include/c++/13/algorithm \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
+  /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/alloc_traits.h \
+  /usr/include/c++/13/bits/allocated_ptr.h \
   /usr/include/c++/13/bits/allocator.h \
   /usr/include/c++/13/bits/basic_ios.h \
   /usr/include/c++/13/bits/basic_ios.tcc \
@@ -192,14 +226,20 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: /home/kardia/ComputerGraphics/Project-
   /usr/include/c++/13/bits/basic_string.tcc \
   /usr/include/c++/13/bits/char_traits.h \
   /usr/include/c++/13/bits/charconv.h \
+  /usr/include/c++/13/bits/chrono.h \
   /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/cxxabi_init_exception.h \
+  /usr/include/c++/13/bits/erase_if.h \
   /usr/include/c++/13/bits/exception.h \
   /usr/include/c++/13/bits/exception_defines.h \
   /usr/include/c++/13/bits/exception_ptr.h \
+  /usr/include/c++/13/bits/fs_dir.h \
+  /usr/include/c++/13/bits/fs_fwd.h \
+  /usr/include/c++/13/bits/fs_ops.h \
+  /usr/include/c++/13/bits/fs_path.h \
   /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
@@ -209,39 +249,55 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: /home/kardia/ComputerGraphics/Project-
   /usr/include/c++/13/bits/istream.tcc \
   /usr/include/c++/13/bits/locale_classes.h \
   /usr/include/c++/13/bits/locale_classes.tcc \
+  /usr/include/c++/13/bits/locale_conv.h \
   /usr/include/c++/13/bits/locale_facets.h \
   /usr/include/c++/13/bits/locale_facets.tcc \
+  /usr/include/c++/13/bits/locale_facets_nonio.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.tcc \
   /usr/include/c++/13/bits/localefwd.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/memoryfwd.h \
   /usr/include/c++/13/bits/move.h \
   /usr/include/c++/13/bits/nested_exception.h \
   /usr/include/c++/13/bits/new_allocator.h \
+  /usr/include/c++/13/bits/node_handle.h \
   /usr/include/c++/13/bits/ostream.tcc \
   /usr/include/c++/13/bits/ostream_insert.h \
+  /usr/include/c++/13/bits/parse_numbers.h \
   /usr/include/c++/13/bits/postypes.h \
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/ptr_traits.h \
+  /usr/include/c++/13/bits/quoted_string.h \
   /usr/include/c++/13/bits/range_access.h \
   /usr/include/c++/13/bits/refwrap.h \
   /usr/include/c++/13/bits/requires_hosted.h \
+  /usr/include/c++/13/bits/shared_ptr.h \
+  /usr/include/c++/13/bits/shared_ptr_base.h \
   /usr/include/c++/13/bits/specfun.h \
   /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
   /usr/include/c++/13/bits/stl_function.h \
+  /usr/include/c++/13/bits/stl_heap.h \
   /usr/include/c++/13/bits/stl_iterator.h \
   /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/13/bits/stl_iterator_base_types.h \
+  /usr/include/c++/13/bits/stl_map.h \
+  /usr/include/c++/13/bits/stl_multimap.h \
   /usr/include/c++/13/bits/stl_pair.h \
+  /usr/include/c++/13/bits/stl_tempbuf.h \
+  /usr/include/c++/13/bits/stl_tree.h \
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stl_vector.h \
   /usr/include/c++/13/bits/streambuf.tcc \
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/uniform_int_dist.h \
+  /usr/include/c++/13/bits/unique_ptr.h \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/uses_allocator_args.h \
   /usr/include/c++/13/bits/utility.h \
@@ -253,31 +309,42 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: /home/kardia/ComputerGraphics/Project-
   /usr/include/c++/13/climits \
   /usr/include/c++/13/clocale \
   /usr/include/c++/13/cmath \
+  /usr/include/c++/13/codecvt \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdint \
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
   /usr/include/c++/13/cstring \
+  /usr/include/c++/13/ctime \
   /usr/include/c++/13/cwchar \
   /usr/include/c++/13/cwctype \
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/exception \
+  /usr/include/c++/13/ext/aligned_buffer.h \
   /usr/include/c++/13/ext/alloc_traits.h \
   /usr/include/c++/13/ext/atomicity.h \
+  /usr/include/c++/13/ext/concurrence.h \
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
+  /usr/include/c++/13/filesystem \
   /usr/include/c++/13/fstream \
   /usr/include/c++/13/initializer_list \
+  /usr/include/c++/13/iomanip \
   /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
   /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
   /usr/include/c++/13/limits \
+  /usr/include/c++/13/locale \
+  /usr/include/c++/13/map \
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
+  /usr/include/c++/13/pstl/execution_defs.h \
+  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
   /usr/include/c++/13/pstl/pstl_config.h \
+  /usr/include/c++/13/ratio \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
   /usr/include/c++/13/stdlib.h \
@@ -306,6 +373,7 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: /home/kardia/ComputerGraphics/Project-
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
+  /usr/include/libintl.h \
   /usr/include/limits.h \
   /usr/include/linux/errno.h \
   /usr/include/linux/limits.h \
@@ -410,7 +478,9 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: /home/kardia/ComputerGraphics/Project-
   /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -661,15 +731,11 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/xsaveoptintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/xsaveintrin.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/x86gprintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/vaesintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/tsxldtrkintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/tmmintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/rtmintrin.h:
 
@@ -678,8 +744,6 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 /usr/lib/gcc/x86_64-linux-gnu/13/include/raointintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/pkuintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/mmintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/mm_malloc.h:
 
@@ -701,8 +765,6 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/clzerointrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/clwbintrin.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/clflushoptintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/cldemoteintrin.h:
@@ -721,8 +783,6 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vpopcntdqvlintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vnnivlintrin.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vnniintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vldqintrin.h:
@@ -733,13 +793,9 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512dqintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512cdintrin.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512bitalgintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512bf16intrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avx5124vnniwintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx5124fmapsintrin.h:
 
@@ -754,6 +810,12 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 /usr/lib/gcc/x86_64-linux-gnu/13/include/amxcomplexintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/amxbf16intrin.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512cdintrin.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h:
 
@@ -776,8 +838,6 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 /usr/include/x86_64-linux-gnu/bits/uio_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
 
@@ -811,10 +871,6 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/enqcmdintrin.h:
-
-/usr/include/wchar.h:
-
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
 /usr/include/time.h:
@@ -829,7 +885,7 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/locale.h:
 
-/usr/include/linux/limits.h:
+/usr/include/libintl.h:
 
 /usr/include/errno.h:
 
@@ -846,8 +902,6 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 /usr/include/c++/13/type_traits:
 
 /usr/include/c++/13/tr1/special_function_util.h:
-
-/usr/include/c++/13/tr1/riemann_zeta.tcc:
 
 /usr/include/c++/13/tr1/poly_laguerre.tcc:
 
@@ -871,10 +925,6 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/c++/13/system_error:
 
-/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
-
-/usr/include/c++/13/string_view:
-
 /usr/include/c++/13/stdlib.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/waitpkgintrin.h:
@@ -883,9 +933,21 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/c++/13/stdexcept:
 
-/usr/include/c++/13/pstl/pstl_config.h:
+/usr/include/linux/limits.h:
+
+/usr/include/c++/13/ratio:
+
+/usr/include/c++/13/pstl/glue_algorithm_defs.h:
+
+/usr/include/c++/13/pstl/execution_defs.h:
 
 /usr/include/c++/13/ostream:
+
+/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
+
+/usr/include/c++/13/string_view:
+
+/usr/include/c++/13/map:
 
 /usr/include/c++/13/iostream:
 
@@ -899,6 +961,8 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/c++/13/fstream:
 
+/usr/include/c++/13/filesystem:
+
 /usr/lib/gcc/x86_64-linux-gnu/13/include/immintrin.h:
 
 /usr/include/c++/13/ext/type_traits.h:
@@ -911,59 +975,95 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/c++/13/ext/atomicity.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_integer.inl:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vp2intersectintrin.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/src/mesh.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_integer.hpp:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/simd/matrix.h:
-
-/usr/include/c++/13/tr1/legendre_function.tcc:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat4x4.hpp:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/src/stb_imageDefinition.cpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/tbmintrin.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat4x3.hpp:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_vector_relational_simd.inl:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat2x4.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
-
-/usr/include/c++/13/limits:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/geometric.hpp:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_matrix.inl:
-
-/usr/include/limits.h:
-
-/usr/include/c++/13/tr1/bessel_function.tcc:
-
-/usr/include/c++/13/initializer_list:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_vec1.hpp:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/quaternion.hpp:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x3.inl:
-
-/usr/include/c++/13/bits/ios_base.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x3.hpp:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/quaternion.inl:
+/usr/include/c++/13/ext/aligned_buffer.h:
 
 /usr/include/c++/13/exception:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/simd/integer.h:
+/usr/include/linux/errno.h:
+
+/usr/include/c++/13/debug/debug.h:
+
+/usr/include/c++/13/debug/assertions.h:
+
+/usr/include/c++/13/ctime:
+
+/usr/include/c++/13/cstring:
+
+/usr/include/c++/13/cstdlib:
+
+/usr/include/c++/13/cstdio:
+
+/usr/include/c++/13/cstdint:
+
+/usr/include/c++/13/cstddef:
+
+/usr/include/c++/13/codecvt:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/cetintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vlintrin.h:
+
+/usr/include/c++/13/cmath:
+
+/usr/include/c++/13/climits:
+
+/usr/include/c++/13/cerrno:
+
+/usr/include/c++/13/cctype:
+
+/usr/include/c++/13/bits/vector.tcc:
+
+/usr/include/c++/13/bits/uses_allocator_args.h:
+
+/usr/include/c++/13/bits/uses_allocator.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+
+/usr/include/c++/13/bits/unique_ptr.h:
+
+/usr/include/c++/13/bits/stringfwd.h:
+
+/usr/include/c++/13/bits/stl_tempbuf.h:
+
+/usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/c++/13/bits/stl_pair.h:
+
+/usr/include/c++/13/bits/stl_map.h:
+
+/usr/include/c++/13/bits/stl_heap.h:
+
+/usr/include/c++/13/bits/stl_construct.h:
+
+/usr/include/c++/13/bits/stl_bvector.h:
+
+/usr/include/c++/13/bits/stl_algobase.h:
+
+/usr/include/c++/13/bits/stl_algo.h:
+
+/usr/include/c++/13/bits/sstream.tcc:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512erintrin.h:
+
+/usr/include/c++/13/bits/streambuf.tcc:
+
+/usr/include/c++/13/bits/specfun.h:
+
+/usr/include/c++/13/bits/refwrap.h:
+
+/usr/include/c++/13/tr1/hypergeometric.tcc:
+
+/usr/include/c++/13/bits/range_access.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/clwbintrin.h:
+
+/usr/include/c++/13/bits/quoted_string.h:
+
+/usr/include/c++/13/bits/ptr_traits.h:
+
+/usr/include/c++/13/bits/predefined_ops.h:
+
+/usr/include/c++/13/bits/postypes.h:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat2x4.inl:
 
@@ -971,27 +1071,19 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat2x3.hpp:
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat3x3.inl:
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_vector_relational_simd.inl:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_geometric_simd.inl:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512fintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 
 /usr/include/c++/13/bits/exception.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_geometric.inl:
-
-/usr/include/c++/13/bits/stl_construct.h:
-
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_geometric.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/src/model.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/wmmintrin.h:
 
@@ -999,27 +1091,31 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/c++/13/bits/ostream.tcc:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/lzcntintrin.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_exponential.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x2.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:
-
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_common_simd.inl:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_vec4.inl:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_common.inl:
 
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avx5124vnniwintrin.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/types.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix4x4.inl:
+
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_matrix_simd.inl:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/_vectorize.hpp:
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/simd/common.h:
+
+/usr/include/c++/13/bits/locale_facets_nonio.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/common.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector2.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/vpclmulqdqintrin.h:
+
+/usr/include/features.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/prfchiintrin.h:
 
@@ -1029,11 +1125,69 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/KHR/khrplatform.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/simd/common.h:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/lzcntintrin.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/common.hpp:
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_exponential.hpp:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/src/shader_s.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/c++/13/bits/shared_ptr.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/quaternion.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix3x3.inl:
+
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix3x3.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/material.inl:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/xsaveintrin.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/light.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_geometric.inl:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat3x3.inl:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/enqcmdintrin.h:
+
+/usr/include/wchar.h:
+
+/usr/include/c++/13/bits/shared_ptr_base.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/camera.h:
+
+/usr/include/c++/13/tr1/riemann_zeta.tcc:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/anim.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/wbnoinvdintrin.h:
+
+/usr/include/c++/13/bits/stl_uninitialized.h:
+
+/usr/include/c++/13/bits/new_allocator.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/Compiler/pushpack1.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/Compiler/poppack1.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/mmintrin.h:
+
+/usr/include/c++/13/algorithm:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vp2intersectintrin.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/src/mesh.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_integer.inl:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h:
 
@@ -1041,39 +1195,31 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/integer.hpp:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/smmintrin.h:
+/usr/include/stdlib.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat3x4.inl:
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/src/main.cpp:
 
 /usr/include/c++/13/backward/binders.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x2.hpp:
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_integer_simd.inl:
+/usr/include/c++/13/cwchar:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vbmivlintrin.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/color4.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat3x3.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
-
-/usr/include/asm-generic/errno.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat2x3.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/stdint-least.h:
-
-/usr/include/c++/13/cerrno:
 
 /usr/include/c++/13/string:
 
@@ -1091,17 +1237,25 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/glad.c:
 
+/usr/include/c++/13/clocale:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat3x2.hpp:
+
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/vec2.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/quaternion.inl:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/tmmintrin.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/MathFunctions.h:
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat3x2.hpp:
 
 /usr/include/c++/13/sstream:
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat3x2.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
@@ -1117,11 +1271,9 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
-/usr/include/x86_64-linux-gnu/bits/errno.h:
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
-/usr/include/c++/13/bits/stl_pair.h:
-
-/usr/include/c++/13/cstdio:
+/usr/include/c++/13/bits/charconv.h:
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
@@ -1129,15 +1281,47 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat2x3.inl:
 
+/usr/include/c++/13/pstl/pstl_config.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/postprocess.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/type_ptr.hpp:
+
+/usr/include/c++/13/bits/localefwd.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512fintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/metadata.h:
+
+/usr/include/c++/13/bits/stl_tree.h:
+
+/usr/include/c++/13/bits/codecvt.h:
+
 /usr/include/string.h:
+
+/usr/include/c++/13/iomanip:
 
 /usr/include/strings.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/_vectorize.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/Importer.hpp:
+
+/usr/include/c++/13/bits/requires_hosted.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
+
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_exponential_simd.inl:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_vec4_simd.inl:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/color4.inl:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/material.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
 
@@ -1145,53 +1329,53 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/x86_64-linux-gnu/bits/dlfcn.h:
 
+/usr/include/c++/13/cwctype:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x4_simd.inl:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/matrix4x4.h:
+
 /usr/include/alloca.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
-
-/usr/include/c++/13/bits/refwrap.h:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat3x2.inl:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
+/usr/include/c++/13/locale:
+
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat4x2.hpp:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x4.inl:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/fxsrintrin.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x4.hpp:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/type_ptr.inl:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_matrix.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/vpclmulqdqintrin.h:
-
-/usr/include/features.h:
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector2.inl:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/aabb.h:
+
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/config.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/popcntintrin.h:
 
 /usr/include/dlfcn.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/src/main.cpp:
+/usr/include/c++/13/bits/erase_if.h:
 
-/usr/include/stdlib.h:
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector3.h:
+
+/usr/include/c++/13/bits/stl_vector.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x2.inl:
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat3x4.hpp:
-
-/usr/include/c++/13/bits/functexcept.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/shaintrin.h:
 
@@ -1219,17 +1403,11 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/endian.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512erintrin.h:
-
-/usr/include/c++/13/bits/specfun.h:
-
-/usr/include/c++/13/bits/streambuf.tcc:
-
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat3x3.hpp:
-
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/scene.h:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_vector_relational.hpp:
 
@@ -1239,9 +1417,9 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/simd/geometric.h:
 
-/usr/include/c++/13/tr1/hypergeometric.tcc:
+/usr/include/c++/13/bits/string_view.tcc:
 
-/usr/include/c++/13/bits/range_access.h:
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
@@ -1251,31 +1429,27 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/movdirintrin.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/simd/platform.h:
+/usr/include/c++/13/bits/stl_iterator_base_types.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat2x4.hpp:
+/usr/include/stdio.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_trigonometric.hpp:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/trigonometric.hpp:
+/usr/include/c++/13/bits/stl_multimap.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
-
-/usr/include/c++/13/bits/uses_allocator_args.h:
-
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
-
-/usr/include/c++/13/bits/charconv.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
 /usr/include/math.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
+
+/usr/include/c++/13/bits/std_abs.h:
+
+/usr/include/c++/13/bits/parse_numbers.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/quaternion_simd.inl:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h:
 
@@ -1289,13 +1463,123 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
-/usr/include/c++/13/cstddef:
+/usr/include/c++/13/bits/utility.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/_fixes.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/c++/13/bits/hash_bytes.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glad/glad.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/matrix_transform.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/src/shader.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat3x3.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vlbwintrin.h:
+
+/usr/include/c++/13/bits/locale_facets.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat3x4.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/trigonometric.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/smmintrin.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat3x4.inl:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x3.hpp:
+
+/usr/include/c++/13/ext/concurrence.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/quaternion.inl:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x3.inl:
+
+/usr/include/c++/13/bits/ios_base.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/fxsrintrin.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/type_ptr.inl:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x4.hpp:
+
+/usr/include/limits.h:
+
+/usr/include/c++/13/tr1/bessel_function.tcc:
+
+/usr/include/c++/13/initializer_list:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_vec1.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/quaternion.hpp:
+
+/usr/include/c++/13/bits/stl_function.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_vec1.inl:
+
+/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
+
+/usr/include/c++/13/limits:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/geometric.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/defs.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-least.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat2x3.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat3x3.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
+
+/usr/include/asm-generic/errno.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat2x4.hpp:
+
+/usr/include/c++/13/bits/functexcept.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat3x4.hpp:
+
+/usr/include/c++/13/tr1/legendre_function.tcc:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat4x4.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/src/stb_imageDefinition.cpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/tbmintrin.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/mat4x3.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/simd/integer.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/simd/matrix.h:
+
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
+
+/usr/include/c++/13/bits/chrono.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/simd/platform.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_integer.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_integer_simd.inl:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_matrix.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_matrix.inl:
+
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_packing.inl:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/mesh.h:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_vec.hpp:
 
@@ -1304,6 +1588,8 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 /usr/include/c++/13/bits/basic_ios.tcc:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_trigonometric.inl:
+
+/usr/include/c++/13/bits/fs_ops.h:
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
@@ -1314,6 +1600,8 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_float.hpp:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_half.hpp:
+
+/usr/include/c++/13/bits/uniform_int_dist.h:
 
 /usr/include/c++/13/bits/locale_classes.tcc:
 
@@ -1357,6 +1645,12 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/glm.hpp:
 
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/vector3.inl:
+
+/usr/include/c++/13/bits/algorithmfwd.h:
+
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_common.hpp:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/constants.hpp:
@@ -1364,8 +1658,6 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 /usr/include/c++/13/bits/ostream_insert.h:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/constants.inl:
-
-/usr/include/c++/13/cstring:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h:
 
@@ -1385,13 +1677,17 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/adxintrin.h:
 
+/usr/include/c++/13/bits/fs_path.h:
+
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/vec3.hpp:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/vec4.hpp:
 
-/usr/include/x86_64-linux-gnu/sys/select.h:
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
-/usr/include/c++/13/cwchar:
+/usr/include/c++/13/bits/streambuf_iterator.h:
+
+/usr/include/GLFW/glfw3.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/serializeintrin.h:
 
@@ -1403,8 +1699,6 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/assert.h:
 
-/usr/include/c++/13/bit:
-
 /usr/include/c++/13/bits/basic_string.tcc:
 
 /usr/include/c++/13/bits/alloc_traits.h:
@@ -1413,11 +1707,11 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/c++/13/bits/concept_check.h:
 
+/usr/include/c++/13/bit:
+
+/usr/include/c++/13/bits/allocated_ptr.h:
+
 /usr/include/c++/13/bits/allocator.h:
-
-/usr/include/c++/13/bits/stl_bvector.h:
-
-/usr/include/c++/13/bits/codecvt.h:
 
 /usr/include/c++/13/bits/cxxabi_forced.h:
 
@@ -1425,41 +1719,37 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/c++/13/bits/exception_ptr.h:
 
-/usr/include/c++/13/bits/istream.tcc:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vnnivlintrin.h:
+
+/usr/include/c++/13/bits/fs_dir.h:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat2x4.hpp:
+
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/func_trigonometric.hpp:
+
+/usr/include/c++/13/bits/fs_fwd.h:
+
+/usr/include/c++/13/bits/memoryfwd.h:
 
 /home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/precision.hpp:
 
 /usr/include/c++/13/bits/functional_hash.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glad/glad.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/matrix_transform.hpp:
-
-/usr/include/c++/13/bits/hash_bytes.h:
-
 /usr/include/c++/13/bits/invoke.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vlbwintrin.h:
+/usr/include/c++/13/bits/istream.tcc:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat3x4.hpp:
-
-/usr/include/c++/13/bits/locale_facets.h:
+/usr/include/c++/13/bits/locale_conv.h:
 
 /usr/include/c++/13/bits/locale_facets.tcc:
 
-/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
-
-/usr/include/c++/13/bits/requires_hosted.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/type_ptr.hpp:
-
-/usr/include/c++/13/bits/localefwd.h:
+/usr/include/c++/13/bits/locale_facets_nonio.tcc:
 
 /usr/include/c++/13/streambuf:
 
-/usr/include/c++/13/bits/memory_resource.h:
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/assimp/texture.h:
 
-/usr/include/c++/13/bits/memoryfwd.h:
+/usr/include/c++/13/bits/memory_resource.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avxneconvertintrin.h:
 
@@ -1471,86 +1761,6 @@ CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: /home/kardia/ComputerGr
 
 /usr/include/c++/13/bits/nested_exception.h:
 
-/usr/include/c++/13/bits/postypes.h:
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/gtc/quaternion_simd.inl:
-
-/usr/include/c++/13/bits/std_abs.h:
-
-/usr/include/c++/13/bits/uses_allocator.h:
-
-/usr/include/c++/13/bits/predefined_ops.h:
-
-/usr/include/c++/13/bits/ptr_traits.h:
-
-/usr/include/c++/13/bits/sstream.tcc:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x4_simd.inl:
-
-/usr/include/c++/13/cwctype:
-
-/usr/include/c++/13/bits/stl_algobase.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_vec1.inl:
-
-/usr/include/c++/13/bits/stl_function.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/_fixes.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/c++/13/bits/utility.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/movdirintrin.h:
-
-/usr/include/stdio.h:
-
-/usr/include/c++/13/bits/stl_iterator_base_types.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/wbnoinvdintrin.h:
-
-/usr/include/c++/13/bits/new_allocator.h:
-
-/usr/include/c++/13/bits/stl_uninitialized.h:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat4x2.inl:
-
-/usr/include/c++/13/bits/stl_vector.h:
-
-/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
-
-/usr/include/GLFW/glfw3.h:
-
-/usr/include/c++/13/bits/streambuf_iterator.h:
-
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
-
-/usr/include/c++/13/bits/string_view.tcc:
-
-/usr/include/c++/13/bits/stringfwd.h:
-
-/usr/include/c++/13/bits/vector.tcc:
-
-/usr/include/c++/13/cctype:
-
-/usr/include/c++/13/climits:
-
-/home/kardia/ComputerGraphics/Project-Computer-Graphics/include/glm/detail/type_mat3x2.hpp:
-
-/usr/include/c++/13/clocale:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/cetintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vlintrin.h:
-
-/usr/include/c++/13/cmath:
-
-/usr/include/c++/13/cstdint:
-
-/usr/include/c++/13/cstdlib:
-
-/usr/include/c++/13/debug/assertions.h:
-
-/usr/include/linux/errno.h:
-
-/usr/include/c++/13/debug/debug.h:
+/usr/include/c++/13/bits/node_handle.h:

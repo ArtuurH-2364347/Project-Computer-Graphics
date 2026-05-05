@@ -1,0 +1,112 @@
+# MTL file - created by a modified js OBJExporter
+
+newmtl 2021_f1_mercedes_w12_misc.etc
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pm 0.5
+Pr 0.5
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd 2021_f1_mercedes_w12_misc.etc.png
+
+newmtl car_tyre_tread.etc
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pm 0.5
+Pr 0.5
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd car_tyre_tread.etc.png
+
+newmtl 2021_f1_mercedes_w12_wheel.etc
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pm 0.5
+Pr 0.5
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd 2021_f1_mercedes_w12_wheel.etc.png
+
+newmtl 2021_f1_mercedes_w12_ext_44.etc
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd 2021_f1_mercedes_w12_ext_44.etc.png
+
+newmtl 2021_f1_mercedes_w12_lights.etc
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd 2021_f1_mercedes_w12_lights.etc.png
+
+newmtl 2021_f1_mercedes_w12_badges.etc
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pm 0.5
+Pr 0.5
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd 2021_f1_mercedes_w12_badges.etc.png
+
+newmtl car_chassis.etc
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pm 0.5
+Pr 0.5
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd car_chassis.etc.png
+
+newmtl 2021_f1_mercedes_w12_cab.etc
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pm 0.5
+Pr 0.5
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd 2021_f1_mercedes_w12_cab.etc.png
+
+newmtl car_windows.etc
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd car_windows.etc.png

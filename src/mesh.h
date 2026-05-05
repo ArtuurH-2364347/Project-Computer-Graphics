@@ -6,7 +6,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <../src/shader_s.h>
+#include <../src/shader.h>
 
 #include <string>
 #include <vector>
