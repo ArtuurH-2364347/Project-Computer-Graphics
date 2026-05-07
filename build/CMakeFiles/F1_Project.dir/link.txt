@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/F1_Project.dir/src/main.cpp.o CMakeFiles/F1_Project.dir/glad.c.o CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o -o F1_Project  /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 -lGL -lassimp 
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/F1_Project.dir/link.d CMakeFiles/F1_Project.dir/src/main.cpp.o CMakeFiles/F1_Project.dir/glad.c.o CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o -o F1_Project  /usr/lib64/libglfw.so.3.4 -lGL -lassimp

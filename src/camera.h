@@ -62,6 +62,14 @@ public:
         return glm::lookAt(Position, Position + Front, WorldUp);
     }
 
+    void SetLookAt(glm::vec3 pos, glm::vec3 target, glm::vec3 worldUp)
+    {
+        Position = pos;
+        Front    = glm::normalize(target - pos);
+        Right    = glm::normalize(glm::cross(Front, worldUp));
+        Up       = glm::cross(Right, Front);
+    }
+    
     void ProcessKeyboard(Camera_Movement direction, float deltaTime)
     {
         float velocity = SPEED * deltaTime;
@@ -112,6 +120,20 @@ public:
         updateCameraVectors();
     }
 
+    void SetFirstPerson(glm::vec3 carPos, glm::vec3 carTangent, glm::vec3 carUp, glm::vec3 carRight)
+        {
+            const float eyeHeight  =  0.60f; //nie mee fucken pls het was echt een pain om dit goed te krijgen
+            const float eyeForward =  -0.10f;
+
+            Position = carPos
+                    + carUp      * eyeHeight
+                    + carTangent * eyeForward;
+
+            Front = glm::normalize(carTangent);
+            Right = glm::normalize(carRight);
+            Up    = glm::normalize(carUp);
+        }
+
 private:
     // calculates the front vector from the Camera's (updated) Euler Angles
     void updateCameraVectors()
@@ -127,5 +149,6 @@ private:
         Up = glm::normalize(glm::cross(Right, Front));
     }
 };
+
 
 #endif

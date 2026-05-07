@@ -6,7 +6,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include <../src/shader.h>
+#include <../src/shader/shader.h>
 
 #include <string>
 #include <vector>
@@ -55,7 +55,6 @@ public:
         this->indices = indices;
         this->textures = textures;
 
-        // now that we have all the required data, set the vertex buffers and its attribute pointers.
         setupMesh();
     }
 
