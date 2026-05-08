@@ -162,27 +162,27 @@ int main()
 
             // ---- auto positie en draai ----
             glm::vec3 carPos     = sampleCircuit(spaCircuit, carT);
-            glm::vec3 carTangent = sampleCircuitTangent(spaCircuit, carT);
+            glm::vec3 carAfgeleide = sampleCircuitAfgeleide(spaCircuit, carT);
 
             glm::vec3 up     = glm::vec3(0.0f, 1.0f, 0.0f);
-            glm::vec3 right  = glm::normalize(glm::cross(up, carTangent));
-            glm::vec3 realUp = glm::cross(carTangent, right);
+            glm::vec3 right  = glm::normalize(glm::cross(up, carAfgeleide));
+            glm::vec3 realUp = glm::cross(carAfgeleide, right);
 
             glm::mat4 rotMat(1.0f);
             rotMat[0] = glm::vec4(right,      0.0f);
             rotMat[1] = glm::vec4(realUp,     0.0f);
-            rotMat[2] = glm::vec4(carTangent, 0.0f);
+            rotMat[2] = glm::vec4(carAfgeleide, 0.0f);
 
             if (camMode == CAM_FOLLOW)
             {
-                glm::vec3 camPos    = carPos - carTangent * CAM_DISTANCE
+                glm::vec3 camPos    = carPos - carAfgeleide * CAM_DISTANCE
                                             + glm::vec3(0.0f, CAM_HEIGHT, 0.0f);
-                glm::vec3 camTarget = carPos + carTangent * CAM_DISTANCE;
+                glm::vec3 camTarget = carPos + carAfgeleide * CAM_DISTANCE;
                 camera.SetLookAt(camPos, camTarget, up);
             }
             else if (camMode == CAM_FIRST_PERSON)
             {
-                camera.SetFirstPerson(carPos, carTangent, realUp, right);
+                camera.SetFirstPerson(carPos, carAfgeleide, realUp, right);
             }
 
             // ---- clear ----
@@ -192,7 +192,7 @@ int main()
             myShader.use();
 
             // ---- lighting ----
-            myShader.setVec3("viewPos", camera.Position); // or camera.GetPosition()
+            myShader.setVec3("viewPos", camera.Position);
             for (int i = 0; i < (int)sceneLights.size(); i++) {
                 string base = "pointLights[" + to_string(i) + "].";
                 myShader.setVec3 (base + "position",  sceneLights[i].position);

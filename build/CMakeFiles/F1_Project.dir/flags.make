@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I/include -I/home/ASCII/Project-Computer-Graphics/include
+C_INCLUDES = -I/include -I/home/aheidbuchel/Project-Computer-Graphics/include
 
 C_FLAGS = 
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/include -I/home/ASCII/Project-Computer-Graphics/include
+CXX_INCLUDES = -I/include -I/home/aheidbuchel/Project-Computer-Graphics/include
 
 CXX_FLAGS = -std=gnu++17
 

@@ -1,7 +1,7 @@
 CMakeFiles/F1_Project.dir/src/stb_imageDefinition.cpp.o: \
- /home/ASCII/Project-Computer-Graphics/src/stb_imageDefinition.cpp \
+ /home/aheidbuchel/Project-Computer-Graphics/src/stb_imageDefinition.cpp \
  /usr/include/stdc-predef.h \
- /home/ASCII/Project-Computer-Graphics/include/stb_image/stb_image.h \
+ /home/aheidbuchel/Project-Computer-Graphics/include/stb_image/stb_image.h \
  /usr/include/stdio.h /usr/include/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/bits/wordsize.h /usr/include/bits/timesize.h \
