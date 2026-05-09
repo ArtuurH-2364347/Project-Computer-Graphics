@@ -1,5 +1,4 @@
 #version 330 core
-
 #define NR_POINT_LIGHTS 6
 
 struct PointLight {
@@ -14,7 +13,6 @@ struct PointLight {
 in vec3 FragPos;
 in vec3 Normal;
 in vec2 TextCoord;
-
 out vec4 FragColor;
 
 uniform sampler2D  ourTexture;
@@ -25,29 +23,28 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, v
 {
     vec3  lightDir    = normalize(light.position - fragPos);
     float diff        = max(dot(normal, lightDir), 0.0);
-
     vec3  halfDir     = normalize(lightDir + viewDir);
     float spec        = pow(max(dot(normal, halfDir), 0.0), 32.0);
-
     float dist        = length(light.position - fragPos);
     float attenuation = 1.0 / (light.constant
                               + light.linear    * dist
                               + light.quadratic * dist * dist);
 
-    vec3 ambient  = 0.05 * diffuseTex * light.color;
     vec3 diffuse  = diff * diffuseTex * light.color * light.intensity;
-    vec3 specular = spec * vec3(0.3) * light.color * light.intensity;
+    vec3 specular = spec * vec3(0.3)  * light.color * light.intensity;
 
-    return (ambient + diffuse + specular) * attenuation;
+    return (diffuse + specular) * attenuation;
 }
 
 void main()
 {
-    vec3 norm      = normalize(Normal);
-    vec3 viewDir   = normalize(viewPos - FragPos);
+    vec3 norm       = normalize(Normal);
+    vec3 viewDir    = normalize(viewPos - FragPos);
     vec3 diffuseTex = vec3(texture(ourTexture, TextCoord));
 
-    vec3 result = vec3(0.0);
+    const float AMBIENT_STRENGTH = 0.08;
+    vec3 result = AMBIENT_STRENGTH * diffuseTex;
+
     for (int i = 0; i < NR_POINT_LIGHTS; i++)
         result += CalcPointLight(pointLights[i], norm, FragPos, viewDir, diffuseTex);
 

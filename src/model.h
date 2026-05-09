@@ -30,6 +30,7 @@ public:
     // model data 
     vector<Texture> textures_loaded;	// stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.
     vector<Mesh>    meshes;
+    std::vector<std::string> meshNames;
     string directory;
     bool gammaCorrection;
 
@@ -44,6 +45,87 @@ public:
     {
         for(unsigned int i = 0; i < meshes.size(); i++)
             meshes[i].Draw(shader);
+    }
+
+    void DrawCar(Shader& shader, float steeringAngleDeg, float distanceTravelled,
+                float wheelRadius = 0.33f)
+    {
+        // hoe hard het wiel draait wordt bepaald door hoeveel afstand er is afgelegd
+        float spinAngle = distanceTravelled / wheelRadius;
+
+        // pivot centers, om te bepalen rond welk punt een mesh draait
+        glm::vec3 steerPivot     = glm::vec3(-0.00024f, 0.6137f, 0.5112f);
+
+        for (unsigned int i = 0; i < meshes.size(); i++)
+        {
+            glm::mat4 localTransform = glm::mat4(1.0f);
+            bool useLocal = false;
+
+            if (meshNames.size() > i)
+            {
+                const std::string& name = meshNames[i];
+
+                // --- stuur ---
+                if (name.find("STEERING_WHEEL") != std::string::npos)
+                {
+                    localTransform =
+                        glm::translate(glm::mat4(1.0f),  steerPivot) *
+                        glm::rotate(glm::mat4(1.0f), glm::radians(steeringAngleDeg), glm::vec3(0.0f, 0.0f, 1.0f)) *
+                        glm::translate(glm::mat4(1.0f), -steerPivot);
+                    useLocal = true;
+                }
+
+                // --- voor links ---
+                else if (name == "LOD_A_WHEEL_mm_wheel001" || name == "LOD_A_TYRE_mm_tyre001")
+                {
+                    glm::vec3 pivot = glm::vec3(-0.78177f, 0.30998f, 1.64886f);
+                    localTransform =
+                        glm::translate(glm::mat4(1.0f),  pivot) *
+                        glm::rotate(glm::mat4(1.0f), glm::radians(-steeringAngleDeg * 0.3f), glm::vec3(0.0f, 1.0f, 0.0f)) *
+                        glm::rotate(glm::mat4(1.0f), spinAngle, glm::vec3(1.0f, 0.0f, 0.0f)) *
+                        glm::translate(glm::mat4(1.0f), -pivot);
+                    useLocal = true;
+                }
+
+                // --- voor rechts ---
+                else if (name == "LOD_A_WHEEL_mm_wheel" || name == "LOD_A_TYRE_mm_tyre")
+                {
+                    glm::vec3 pivot = glm::vec3(0.78177f, 0.30998f, 1.64886f);
+                    localTransform =
+                        glm::translate(glm::mat4(1.0f),  pivot) *
+                        glm::rotate(glm::mat4(1.0f), glm::radians(-steeringAngleDeg * 0.3f), glm::vec3(0.0f, 1.0f, 0.0f)) *
+                        glm::rotate(glm::mat4(1.0f), spinAngle, glm::vec3(1.0f, 0.0f, 0.0f)) *
+                        glm::translate(glm::mat4(1.0f), -pivot);
+                    useLocal = true;
+                }
+
+                // --- achter links ---
+                else if (name == "LOD_A_WHEEL_REAR_mm_wheel001" || name == "LOD_A_TYRE_REAR_mm_tyre001")
+                {
+                    glm::vec3 pivot = glm::vec3(-0.75992f, 0.30440f, -2.07850f);
+                    localTransform =
+                        glm::translate(glm::mat4(1.0f),  pivot) *
+                        glm::rotate(glm::mat4(1.0f), spinAngle, glm::vec3(1.0f, 0.0f, 0.0f)) *
+                        glm::translate(glm::mat4(1.0f), -pivot);
+                    useLocal = true;
+                }
+
+                // --- achter rechts ---
+                else if (name == "LOD_A_WHEEL_REAR_mm_wheel" || name == "LOD_A_TYRE_REAR_mm_tyre")
+                {
+                    glm::vec3 pivot = glm::vec3(0.75992f, 0.30440f, -2.07850f);
+                    localTransform =
+                        glm::translate(glm::mat4(1.0f),  pivot) *
+                        glm::rotate(glm::mat4(1.0f), spinAngle, glm::vec3(1.0f, 0.0f, 0.0f)) *
+                        glm::translate(glm::mat4(1.0f), -pivot);
+                    useLocal = true;
+                }
+            }
+
+            shader.setMat4("steeringLocal", localTransform);
+            shader.setBool("useSteeringLocal", useLocal);
+            meshes[i].Draw(shader);
+        }
     }
     
 private:
@@ -84,6 +166,7 @@ private:
         }
 
     }
+
 
     Mesh processMesh(aiMesh *mesh, const aiScene *scene)
     {
@@ -166,6 +249,7 @@ private:
         textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
         
         // return a mesh object created from the extracted mesh data
+        meshNames.push_back(std::string(mesh->mName.C_Str()));
         return Mesh(vertices, indices, textures);
     }
 

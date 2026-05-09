@@ -47,27 +47,38 @@ inline std::vector<BezierSegment> buildSpaCircuit()
 {
     const float Y = 0.0f;
     std::vector<glm::vec3> pts = {
-
         {   0.0f, Y,   0.0f },
-        {  15.0f, Y,  10.0f },
-        {  30.0f, Y,  18.0f },
-        {  45.0f, Y,  10.0f },
-        {  45.0f, 1.0f, -10.0f },
-        {  30.0f, 5.0f, -18.0f },
-        {  15.0f, 3.0f, -10.0f },
-        {   0.0f, Y,   0.0f },
-        { -15.0f, Y, -10.0f },
-        { -30.0f, Y, -18.0f },
-        { -45.0f, Y, -10.0f },
-        { -45.0f, Y,  10.0f },
-        { -30.0f, Y,  18.0f },
-        { -15.0f, Y,  10.0f },
+        {  15.0f, Y,   0.0f },
+        {  30.0f, Y,   0.0f },
+        {  45.0f, Y,   0.0f },
+        {  60.0f, Y,   0.0f },
+        {  70.0f, Y,   3.0f },
+        {  79.0f, Y,   9.0f },
+        {  86.0f, Y,  18.0f },
+        {  91.0f, Y,  28.0f },
+        {  94.0f, Y,  38.0f },
+        {  95.0f, Y,  49.0f },
+        {  93.0f, Y,  59.0f },
+        {  88.0f, Y,  68.0f },
+        {  81.0f, Y,  75.0f },
+        {  72.0f, Y,  80.0f },
+        {  58.0f, Y,  83.0f },
+        {  44.0f, Y,  84.0f },
+        {  30.0f, Y,  83.0f },
+        {  18.0f, Y,  79.0f },
+        {   8.0f, Y,  72.0f },
+        {   0.0f, Y,  63.0f },
+        {  -7.0f, Y,  53.0f },
+        { -11.0f, Y,  43.0f },
+        { -12.0f, Y,  32.0f },
+        { -10.0f, Y,  22.0f },
+        {  -5.0f, Y,  13.0f },
         {   0.0f, Y,   0.0f },
     };
 
     std::vector<BezierSegment> circuit;
     int   n       = (int)pts.size() - 1;
-    float tension = 0.4f;
+    float tension = 0.35f;
 
     for (int i = 0; i < n; i++) {
         glm::vec3 p0 = pts[(i - 1 + n) % n];
@@ -109,4 +120,29 @@ inline glm::vec3 sampleCircuitAfgeleide(const std::vector<BezierSegment>& circui
     glm::vec3 tan = cubicBezierAfgeleide(s.P0, s.C0, s.C1, s.P1, t);
     if (glm::length(tan) < 1e-6f) tan = glm::vec3(1, 0, 0);
     return glm::normalize(tan);
+}
+
+inline glm::vec3 cubicBezierTweedeAfgeleide(const glm::vec3& P0, const glm::vec3& C0,
+                                              const glm::vec3& C1, const glm::vec3& P1,
+                                              float t)
+{
+    float u = 1.0f - t;
+    return 6.0f * (u*(C1 - 2.0f*C0 + P0) + t*(P1 - 2.0f*C1 + C0));
+}
+
+inline float sampleCurvature(const std::vector<BezierSegment>& circuit, float globalT)
+{
+    int   n   = (int)circuit.size();
+    int   seg = (int)globalT % n;
+    float t   = globalT - (float)(int)globalT;
+    const auto& s = circuit[seg];
+
+    glm::vec3 d1 = cubicBezierAfgeleide(s.P0, s.C0, s.C1, s.P1, t);
+    glm::vec3 d2 = cubicBezierTweedeAfgeleide(s.P0, s.C0, s.C1, s.P1, t);
+
+    float cross2D = d1.x * d2.z - d1.z * d2.x;
+    float speed   = glm::length(d1);
+    if (speed < 1e-6f) return 0.0f;
+
+    return cross2D / (speed * speed * speed);
 }
