@@ -134,6 +134,49 @@ public:
             Up    = glm::normalize(carUp);
         }
 
+    void SetFirstPersonShake(glm::vec3 carPos, glm::vec3 carTangent, glm::vec3 carUp,
+                            glm::vec3 carRight, float time, float speed)
+    {
+        const float eyeHeight  =  0.60f;
+        const float eyeForward = -0.10f;
+
+        float speedFactor = glm::clamp(speed / 5.0f, 0.0f, 1.0f);
+
+        // meerdere sinus functies om geen duidelijk patroon te krijgen in de saheke
+        float bump =
+            sin(time * 28.0f) * 0.0030f + 
+            sin(time * 13.0f) * 0.0020f +
+            sin(time *  7.0f) * 0.0015f;
+
+        float wobble =
+            sin(time * 19.0f + 1.3f) * 0.0015f +
+            sin(time *  9.0f + 0.7f) * 0.0010f;
+
+        float pitch =
+            sin(time * 28.0f)        * 0.50f +
+            sin(time * 11.0f + 0.5f) * 0.30f;
+
+        float roll =
+            sin(time * 17.0f + 1.3f) * 0.25f +
+            sin(time *  8.0f + 2.1f) * 0.20f;
+
+        bump    *= speedFactor;
+        wobble  *= speedFactor;
+        pitch   *= speedFactor;
+        roll    *= speedFactor;
+
+        Position = carPos
+                + carUp      * (eyeHeight + bump)
+                + carTangent * eyeForward
+                + carRight   * wobble;
+
+        glm::vec3 shakeUp = glm::normalize(carUp    + carTangent * glm::radians(pitch)
+                                                    + carRight   * glm::radians(roll));
+        Front = glm::normalize(carTangent);
+        Right = glm::normalize(carRight);
+        Up    = shakeUp;
+    }
+
 private:
     // calculates the front vector from the Camera's (updated) Euler Angles
     void updateCameraVectors()

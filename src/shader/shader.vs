@@ -6,6 +6,8 @@ layout (location = 2) in vec2 aTexCoord;
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
+uniform mat4 steeringLocal;
+uniform bool useSteeringLocal;
 
 out vec3 FragPos;
 out vec3 Normal;
@@ -13,10 +15,11 @@ out vec2 TextCoord;
 
 void main()
 {
-    vec4 worldPos   = model * vec4(aPos, 1.0);
-    FragPos         = vec3(worldPos);
-    Normal          = mat3(transpose(inverse(model))) * aNormal;
-    TextCoord       = aTexCoord;
+    mat4 finalModel = useSteeringLocal ? model * steeringLocal : model;
 
-    gl_Position = projection * view * worldPos;
+    vec4 worldPos = finalModel * vec4(aPos, 1.0);
+    FragPos       = vec3(worldPos);
+    Normal        = mat3(transpose(inverse(finalModel))) * aNormal;
+    TextCoord     = aTexCoord;
+    gl_Position   = projection * view * worldPos;
 }
