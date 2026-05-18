@@ -148,7 +148,7 @@ int main()
 
         // auto animation state
         float carT     = 0.0f;
-        
+        float distanceTravelled = 0.0f;
         //float carSpeed = 0;
 
         // --------------------------------------------------------------
@@ -188,6 +188,9 @@ int main()
             carT += carSpeed * deltaTime;
             if (carT >= (float)NUM_SEGMENTS)
                 carT -= (float)NUM_SEGMENTS;
+            distanceTravelled += glm::abs(carSpeed) * deltaTime;
+            float curvature = sampleCurvature(nbrCircuit, carT);
+            float steeringAngleDeg = glm::clamp(-curvature * 1200.0f, -90.0f, 90.0f);
 
                 
             // ---- auto positie en draai ----
@@ -259,7 +262,7 @@ int main()
             model *= rotMat;
             model = glm::scale(model, glm::vec3(carSize, carSize, carSize));
             myShader.setMat4("model", model);
-            myModel.Draw(myShader);
+            myModel.DrawCar(myShader, steeringAngleDeg, distanceTravelled);
 
             // ---- Draw debug path ----
             myShader.setMat4("model", glm::mat4(1.0f));
