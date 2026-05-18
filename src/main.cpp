@@ -44,6 +44,7 @@ CamMode camMode = CAM_FOLLOW;
 
 float  deltaTime = 0.0f;
 float  lastFrame = 0.0f;
+char speedIncrease = 'n'; // nothing
 
 // -----------------------------------------------------------------------
 //  PATH DEBUG LINE
@@ -119,9 +120,16 @@ int main()
     glEnable(GL_DEPTH_TEST);
 
     {
+        // Model and Shader declaration
         Shader myShader("src/shader/shader.vs", "src/shader/shader.fs");
-        Model  myModel(filesystem::path("models/2021_F1_Mercedes-Benz_W12/2021_F1_Mercedes-Benz_W12.obj"));
+        Model  myModel(filesystem::path("models/2021_F1_Mercedes-Benz_W12/2021_F1_Mercedes-Benz_W12.obj")); // => obj file
+        // Model myModel(filesystem::path("models/2021_f1_mercedes-benz_w12_gLTF/scene.gltf")); // => gltf file
 
+        Model myTrack(filesystem::path("models/nurburgring_race_driver_grid_ds_gltf/scene.gltf"));
+
+        // ---- track aanpassingen ----
+        glm::vec3 circuitPos = glm::vec3(-420.0f, -20.0f, 390.0f);
+        
         std::vector<std::string> skyFaces = {
             "models/skybox/right.jpg",
             "models/skybox/left.jpg",
@@ -133,14 +141,16 @@ int main()
         Skybox skybox(skyFaces);
 
         // Build circuit & GPU path mesh & lighting
-        vector<BezierSegment> spaCircuit = buildSpaCircuit();
+        vector<BezierSegment> nbrCircuit = buildNBRCircuit();
         vector<PointLight> sceneLights = buildSceneLights();
-        PathMesh pathMesh = buildPathMesh(spaCircuit);
-        const int NUM_SEGMENTS = (int)spaCircuit.size();
+        PathMesh pathMesh = buildPathMesh(nbrCircuit);
+        const int NUM_SEGMENTS = (int)nbrCircuit.size();
 
         // auto animation state
+        
         float carT     = 0.0f;
-        float carSpeed = CAR_SPEED;
+        
+        //float carSpeed = 0;
 
         // --------------------------------------------------------------
         //  RENDER LOOP
@@ -155,22 +165,42 @@ int main()
             processInput(window);
             glfwPollEvents();
 
-            // ---- auto vooruit doen ----
+            // ---- auto vooruit doen ---- (en een beetje interactie)
+            float carSpeed = CAR_SPEED * 0.7;
+
+            switch (speedIncrease)
+            {
+            case 's': // snel
+                carSpeed *= 1.5;
+                break;
+            case 't': // traag
+                carSpeed *= 0.1; 
+                break;
+            case 'r': // rem
+                carSpeed *= 0;
+                break;
+            case 'a': // achteruit
+                carSpeed *= -0.3;
+                break;
+            default:
+                break;
+            }
+
             carT += carSpeed * deltaTime;
             if (carT >= (float)NUM_SEGMENTS)
                 carT -= (float)NUM_SEGMENTS;
 
             // ---- auto positie en draai ----
-            glm::vec3 carPos     = sampleCircuit(spaCircuit, carT);
-            glm::vec3 carAfgeleide = sampleCircuitAfgeleide(spaCircuit, carT);
+            glm::vec3 carPos     = sampleCircuit(nbrCircuit, carT);
+            glm::vec3 carAfgeleide = sampleCircuitAfgeleide(nbrCircuit, carT);
 
             glm::vec3 up     = glm::vec3(0.0f, 1.0f, 0.0f);
-            glm::vec3 right  = glm::normalize(glm::cross(up, carAfgeleide));
-            glm::vec3 realUp = glm::cross(carAfgeleide, right);
+            glm::vec3 right = glm::normalize(glm::cross(carAfgeleide, up));
+            glm::vec3 realUp = glm::cross(right, carAfgeleide);
 
             glm::mat4 rotMat(1.0f);
             rotMat[0] = glm::vec4(right,      0.0f);
-            rotMat[1] = glm::vec4(realUp,     0.0f);
+            rotMat[1] = glm::vec4(realUp, 0.0f);
             rotMat[2] = glm::vec4(carAfgeleide, 0.0f);
 
             if (camMode == CAM_FOLLOW)
@@ -184,6 +214,9 @@ int main()
             {
                 camera.SetFirstPerson(carPos, carAfgeleide, realUp, right);
             }
+
+            //glm::vec3 camPos = camera.Position;
+            //std::cout << "X: " << camPos.x << "  |  Y: " << camPos.y << "  |  Z: " << camPos.z << "\n";
 
             // ---- clear ----
             glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -203,7 +236,6 @@ int main()
                 myShader.setFloat(base + "quadratic", sceneLights[i].quadratic);
             }
 
-
             // ---- matrices ----
             glm::mat4 view = camera.GetViewMatrix();
             glm::mat4 projection = glm::perspective(
@@ -215,10 +247,16 @@ int main()
             myShader.setMat4("view",       view);
             myShader.setMat4("projection", projection);
 
+            // ---- Draw track ----
+            glm::mat4 trackModel = glm::mat4(1.0f);
+            trackModel = glm::translate(trackModel, circuitPos);
+            myShader.setMat4("model", trackModel);
+            myTrack.Draw(myShader);
+
             // ---- Draw auto ----
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, carPos);
-            model = model * rotMat;
+            model *= rotMat;
             model = glm::scale(model, glm::vec3(carSize, carSize, carSize));
             myShader.setMat4("model", model);
             myModel.Draw(myShader);

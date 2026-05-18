@@ -7,13 +7,14 @@
 // -----------------------------------------------------------------------
 //  GLOBALS
 // -----------------------------------------------------------------------
+extern char speedIncrease;
 extern Camera  camera;
 extern float   deltaTime;
 extern CamMode camMode;
-extern bool filterBlur;
-extern bool filterVignette;
-extern bool filterSharpen;
-extern bool filterScanline;
+extern bool filterBlur = false;
+extern bool filterVignette = false;
+extern bool filterSharpen = false;
+extern bool filterScanline = false;
 
 // -----------------------------------------------------------------------
 //  CALLBACKS
@@ -36,6 +37,7 @@ inline void mouse_callback(GLFWwindow* window, double posX, double posY)
 // -----------------------------------------------------------------------
 inline void processInput(GLFWwindow* window)
 {
+    speedIncrease = 'n';
     static bool tabWasPressed = false;
 
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -66,7 +68,7 @@ inline void processInput(GLFWwindow* window)
     {
         if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS ||
             glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
-            camera.ProcessKeyboard(FORWARD,  deltaTime);
+            camera.ProcessKeyboard(FORWARD, deltaTime);
         if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
             camera.ProcessKeyboard(BACKWARD, deltaTime);
         if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS ||
@@ -78,5 +80,23 @@ inline void processInput(GLFWwindow* window)
             camera.ProcessKeyboard(UP,       deltaTime);
         if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
             camera.ProcessKeyboard(DOWN,     deltaTime);
+    }
+    else
+    {
+        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS ||
+            glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
+            speedIncrease = 's'; // snel
+        }
+        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+            speedIncrease = 't'; // traag
+        }
+        if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+        {
+            speedIncrease = 'r'; // rem
+        }
+        if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+        {
+            speedIncrease = 'a'; // achteruit
+        }
     }
 }

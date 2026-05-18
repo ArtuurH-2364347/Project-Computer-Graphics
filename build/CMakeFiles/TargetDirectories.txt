@@ -1,3 +1,3 @@
-/home/aheidbuchel/Project-Computer-Graphics/build/CMakeFiles/F1_Project.dir
-/home/aheidbuchel/Project-Computer-Graphics/build/CMakeFiles/edit_cache.dir
-/home/aheidbuchel/Project-Computer-Graphics/build/CMakeFiles/rebuild_cache.dir
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/build/CMakeFiles/F1_Project.dir
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/build/CMakeFiles/edit_cache.dir
+/home/kardia/ComputerGraphics/Project-Computer-Graphics/build/CMakeFiles/rebuild_cache.dir
