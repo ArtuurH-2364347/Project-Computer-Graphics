@@ -147,7 +147,6 @@ int main()
         const int NUM_SEGMENTS = (int)nbrCircuit.size();
 
         // auto animation state
-        
         float carT     = 0.0f;
         
         //float carSpeed = 0;
@@ -190,6 +189,7 @@ int main()
             if (carT >= (float)NUM_SEGMENTS)
                 carT -= (float)NUM_SEGMENTS;
 
+                
             // ---- auto positie en draai ----
             glm::vec3 carPos     = sampleCircuit(nbrCircuit, carT);
             glm::vec3 carAfgeleide = sampleCircuitAfgeleide(nbrCircuit, carT);
