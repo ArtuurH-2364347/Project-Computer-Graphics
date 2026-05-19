@@ -285,7 +285,7 @@ int main()
             }
             else if (camMode == CAM_FIRST_PERSON)
             {
-                camera.SetFirstPerson(carPos, carAfgeleide, realUp, right);
+                camera.SetFirstPersonShake(carPos, carAfgeleide, realUp, right, currentFrame, carSpeed);
             }
 
             //glm::vec3 camPos = camera.Position;
