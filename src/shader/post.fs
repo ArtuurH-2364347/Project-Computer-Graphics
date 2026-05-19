@@ -10,6 +10,8 @@ uniform int filterBlur;
 uniform int filterVignette;
 uniform int filterSharpen;
 uniform int filterScanline;
+uniform int       bloomEnabled;
+uniform sampler2D bloomTexture;
 
 vec3 convolve(mat3 kernel)
 {
@@ -25,6 +27,12 @@ vec3 convolve(mat3 kernel)
 void main()
 {
     vec3 color = texture(screenTexture, TexCoords).rgb;
+
+    if (bloomEnabled == 1)
+    {
+        vec3 bloom = texture(bloomTexture, TexCoords).rgb;
+        color += bloom;
+    }
 
     // --- Gaussian blur (G) ---
     if (filterBlur == 1)
@@ -63,5 +71,7 @@ void main()
         color *= vignette;
     }
 
-    FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
+    color = color / (color + vec3(1.0));
+    //FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
+    FragColor = vec4(color, 1.0);
 }

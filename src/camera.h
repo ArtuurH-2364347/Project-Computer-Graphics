@@ -122,7 +122,7 @@ public:
 
     void SetFirstPerson(glm::vec3 carPos, glm::vec3 carTangent, glm::vec3 carUp, glm::vec3 carRight)
         {
-            const float eyeHeight  =  0.60f; //nie mee fucken pls het was echt een pain om dit goed te krijgen
+            const float eyeHeight  =  0.90f; //nie mee fucken pls het was echt een pain om dit goed te krijgen
             const float eyeForward =  -0.10f;
 
             Position = carPos
@@ -137,7 +137,7 @@ public:
     void SetFirstPersonShake(glm::vec3 carPos, glm::vec3 carTangent, glm::vec3 carUp,
                             glm::vec3 carRight, float time, float speed)
     {
-        const float eyeHeight  =  0.60f;
+        const float eyeHeight  =  0.90f;
         const float eyeForward = -0.10f;
 
         float speedFactor = glm::clamp(speed / 5.0f, 0.0f, 1.0f);

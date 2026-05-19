@@ -1,5 +1,5 @@
 #version 330 core
-#define NR_POINT_LIGHTS 6
+#define NR_POINT_LIGHTS 32
 
 struct PointLight {
     vec3  position;
@@ -13,7 +13,8 @@ struct PointLight {
 in vec3 FragPos;
 in vec3 Normal;
 in vec2 TextCoord;
-out vec4 FragColor;
+layout (location = 0) out vec4 FragColor;
+layout (location = 1) out vec4 BrightColor;
 
 uniform sampler2D  ourTexture;
 uniform PointLight pointLights[NR_POINT_LIGHTS];
@@ -49,4 +50,7 @@ void main()
         result += CalcPointLight(pointLights[i], norm, FragPos, viewDir, diffuseTex);
 
     FragColor = vec4(result, 1.0);
+
+    float brightness = dot(result, vec3(0.2126, 0.7152, 0.0722));
+    BrightColor = brightness > 0.7 ? vec4(result, 1.0) : vec4(0.0, 0.0, 0.0, 1.0);
 }
