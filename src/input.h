@@ -11,10 +11,9 @@ extern char speedIncrease;
 extern Camera  camera;
 extern float   deltaTime;
 extern CamMode camMode;
-extern bool filterBlur = false;
-extern bool filterVignette = false;
-extern bool filterSharpen = false;
-extern bool filterScanline = false;
+extern bool filterBlur;
+extern bool filterSharpen;
+extern bool filterScanline;
 
 // -----------------------------------------------------------------------
 //  CALLBACKS
@@ -53,15 +52,13 @@ inline void processInput(GLFWwindow* window)
 
     bool fNow = glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS;
     bool gNow = glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS;
-    bool hNow = glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS;
     bool jNow = glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS;
 
     if (fNow && !fWas) filterSharpen  = !filterSharpen;
     if (gNow && !gWas) filterBlur     = !filterBlur;
-    if (hNow && !hWas) filterVignette = !filterVignette;
     if (jNow && !jWas) filterScanline = !filterScanline;
 
-    fWas = fNow; gWas = gNow; hWas = hNow; jWas = jNow;
+    fWas = fNow; gWas = gNow; jWas = jNow;
     
     // Free-cam movement
     if (camMode == CAM_FREE)

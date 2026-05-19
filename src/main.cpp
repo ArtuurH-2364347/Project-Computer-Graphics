@@ -46,6 +46,11 @@ float  deltaTime = 0.0f;
 float  lastFrame = 0.0f;
 char speedIncrease = 'n'; // nothing
 
+// filter toggles
+bool filterBlur     = false;
+bool filterSharpen  = false;
+bool filterScanline = false;
+
 // -----------------------------------------------------------------------
 //  PATH DEBUG LINE
 // -----------------------------------------------------------------------
@@ -368,10 +373,9 @@ int main()
             postShader.setInt("bloomEnabled",  1);
             postShader.setInt("camMode",       (int)camMode);
             postShader.setVec2("resolution",   glm::vec2(screenWidth, screenHeight));
-            postShader.setInt("filterBlur",    0);
-            postShader.setInt("filterSharpen", 0);
-            postShader.setInt("filterScanline",0);
-            postShader.setInt("filterVignette",0);
+            postShader.setInt("filterBlur",    filterBlur);
+            postShader.setInt("filterSharpen", filterSharpen);
+            postShader.setInt("filterScanline",filterScanline);
             glBindVertexArray(quadVAO);
             glDrawArrays(GL_TRIANGLES, 0, 6);
 

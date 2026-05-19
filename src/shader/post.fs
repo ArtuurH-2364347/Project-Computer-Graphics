@@ -7,7 +7,6 @@ uniform int       camMode;         // 0=FOLLOW 1=FIRST_PERSON 2=FREE
 uniform vec2      resolution;
 
 uniform int filterBlur;
-uniform int filterVignette;
 uniform int filterSharpen;
 uniform int filterScanline;
 uniform int       bloomEnabled;
@@ -20,7 +19,7 @@ vec3 convolve(mat3 kernel)
     for (int i = -1; i <= 1; i++)
         for (int j = -1; j <= 1; j++)
             result += texture(screenTexture, TexCoords + vec2(float(j), float(i)) * texOffset).rgb
-                      * kernel[i+1][j+1];
+                      * kernel[j+1][i+1];
     return result;
 }
 
@@ -43,6 +42,15 @@ void main()
             1.0/16.0, 2.0/16.0, 1.0/16.0
         );
         color = convolve(gaussian);
+        color = convolve(gaussian);
+        color = convolve(gaussian);
+        color = convolve(gaussian);
+        color = convolve(gaussian);
+        color = convolve(gaussian);
+        color = convolve(gaussian);
+        color = convolve(gaussian);
+        color = convolve(gaussian);
+        color = convolve(gaussian);
     }
 
     // --- Sharpening / Laplacian (F) ---
@@ -50,7 +58,7 @@ void main()
     {
         mat3 laplacian = mat3(
              0.0, -0.5,  0.0,
-            -0.5,  3.0, -0.5,
+            -0.5,  4.0, -0.5,
              0.0, -0.5,  0.0
         );
         color = convolve(laplacian);
@@ -61,14 +69,6 @@ void main()
     {
         float scanline = mod(gl_FragCoord.y, 3.0) < 1.0 ? 0.92 : 1.0;
         color *= scanline;
-    }
-
-    // --- Vignette (H) ---
-    if (filterVignette == 1)
-    {
-        vec2  uv      = TexCoords - 0.5;
-        float vignette = pow(clamp(1.0 - dot(uv * 1.8, uv * 1.8), 0.0, 1.0), 0.6);
-        color *= vignette;
     }
 
     color = color / (color + vec3(1.0));
