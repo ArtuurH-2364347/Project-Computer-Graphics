@@ -15,8 +15,8 @@ constexpr float CAR_SPEED = 1.2f;
 // -----------------------------------------------------------------------
 //  CAMERA
 // -----------------------------------------------------------------------
-constexpr float CAM_DISTANCE = 5.0f;
-constexpr float CAM_HEIGHT   = 2.0f;
+constexpr float CAM_DISTANCE = 8.0f;
+constexpr float CAM_HEIGHT   = 3.0f;
 
 // -----------------------------------------------------------------------
 //  LIGHTING

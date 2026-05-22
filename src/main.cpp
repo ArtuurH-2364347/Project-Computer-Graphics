@@ -26,6 +26,7 @@
 #include "skybox/skybox.h"
 #include "config.h"
 #include "cammode.h"
+#include <../src/hud/hud.h>
 
 using namespace std;
 
@@ -45,6 +46,15 @@ CamMode camMode = CAM_FOLLOW;
 float  deltaTime = 0.0f;
 float  lastFrame = 0.0f;
 char speedIncrease = 'n'; // nothing
+
+//hud toggle
+bool hideHud = false;
+
+// pitsop
+bool pitstop = false;
+
+// bezier toggle
+bool hideBC = false;
 
 // filter toggles
 bool filterBlur     = false;
@@ -121,18 +131,27 @@ int main()
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+    // ---- Window Icon ----
+    GLFWimage images[1];
+    images[0].pixels = stbi_load("models/icon/F1-Logo.png", &images[0].width, &images[0].height, 0, 4); // rgba channels
+    glfwSetWindowIcon(window, 1, images);
+    stbi_image_free(images[0].pixels);
+
     stbi_set_flip_vertically_on_load(true);
     glEnable(GL_DEPTH_TEST);
 
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     {
-        // Model and Shader declaration
+        // ---- Model and Shader Declaration ----
         Shader myShader("src/shader/shader.vs", "src/shader/shader.fs");
         Model  myModel(filesystem::path("models/2021_F1_Mercedes-Benz_W12/2021_F1_Mercedes-Benz_W12.obj")); // => obj file
         // Model myModel(filesystem::path("models/2021_f1_mercedes-benz_w12_gLTF/scene.gltf")); // => gltf file
 
         Model myTrack(filesystem::path("models/nurburgring_race_driver_grid_ds_gltf/scene.gltf"));
 
-        // ---- track aanpassingen ----
+        // ---- Track Aanpassingen ----
         glm::vec3 circuitPos = glm::vec3(-420.0f, -20.0f, 390.0f);
         
         std::vector<std::string> skyFaces = {
@@ -147,9 +166,12 @@ int main()
 
         // Build circuit & GPU path mesh & lighting
         vector<BezierSegment> nbrCircuit = buildNBRCircuit();
+        vector<BezierSegment> pitstopCircuit = buildNBRCircuit(true);
         vector<PointLight> sceneLights = buildSceneLights();
         PathMesh pathMesh = buildPathMesh(nbrCircuit);
+        PathMesh pitstopPathMesh = buildPathMesh(pitstopCircuit);
         const int NUM_SEGMENTS = (int)nbrCircuit.size();
+        const int NUM_PS_SEGMENTS = (int)pitstopCircuit.size();
 
         // auto animation state
         float carT     = 0.0f;
@@ -223,6 +245,10 @@ int main()
 
         Shader postShader("src/shader/post.vs", "src/shader/post.fs");
 
+        Hud hud;
+        hud.setupHud(camMode);
+        
+        
 
         // --------------------------------------------------------------
         //  RENDER LOOP
@@ -238,18 +264,19 @@ int main()
             glfwPollEvents();
 
             // ---- auto vooruit doen ---- (en een beetje interactie)
-            float carSpeed = CAR_SPEED * 0.7f;
+
+            float carSpeed = CAR_SPEED * 0.6f;
 
             switch (speedIncrease)
             {
             case 's': // snel
-                carSpeed *= 1.5;
+                carSpeed *= 3;
                 break;
             case 't': // traag
                 carSpeed *= 0.1; 
                 break;
             case 'r': // rem
-                carSpeed *= 0;
+                carSpeed = 0;
                 break;
             case 'a': // achteruit
                 carSpeed *= -0.3;
@@ -262,15 +289,39 @@ int main()
             if (carT >= (float)NUM_SEGMENTS)
                 carT -= (float)NUM_SEGMENTS;
             distanceTravelled += glm::abs(carSpeed) * deltaTime;
+            
+            
             float curvature = sampleCurvature(nbrCircuit, carT);
+            if (pitstop)
+            {
+                curvature = sampleCurvature(pitstopCircuit, carT);
+            }
+
             float steeringAngleDeg = glm::clamp(-curvature * 1200.0f, -90.0f, 90.0f);
 
-                
-            // ---- auto positie en draai ----
-            glm::vec3 carPos     = sampleCircuit(nbrCircuit, carT);
 
+            // ---- auto positie en draai ----
+            glm::vec3 carPos;
+            if (!pitstop)
+            {
+                carPos = sampleCircuit(nbrCircuit, carT);
+            }
+            else {
+                carPos = sampleCircuit(pitstopCircuit, carT);
+                if (-122 > carPos.x > -118 && 105 > carPos.z > 101)
+                {
+                    carSpeed *= 0.1;
+                }
+                
+            }
+            
 
             glm::vec3 carAfgeleide = sampleCircuitAfgeleide(nbrCircuit, carT);
+            if (pitstop)
+            {
+                carAfgeleide = sampleCircuitAfgeleide(pitstopCircuit, carT);
+            }
+            
 
             glm::vec3 up     = glm::vec3(0.0f, 1.0f, 0.0f);
             glm::vec3 right = glm::normalize(glm::cross(carAfgeleide, up));
@@ -284,7 +335,14 @@ int main()
             if (camMode == CAM_FOLLOW)
             {
                 glm::vec3 camPos    = carPos - carAfgeleide * CAM_DISTANCE
-                                            + glm::vec3(0.0f, CAM_HEIGHT, 0.0f);
+                                            + glm::vec3(0.0f, CAM_HEIGHT + 0.0f, 0.0f);
+                glm::vec3 camTarget = carPos + carAfgeleide * CAM_DISTANCE;
+                camera.SetLookAt(camPos, camTarget, up);
+            }
+            else if (camMode == CAM_CINEMATIC)
+            {
+                glm::vec3 camPos = carPos - carAfgeleide * CAM_DISTANCE + 50.0f 
+                                            + glm::vec3(3.0f, CAM_HEIGHT, 0.0f);
                 glm::vec3 camTarget = carPos + carAfgeleide * CAM_DISTANCE;
                 camera.SetLookAt(camPos, camTarget, up);
             }
@@ -293,8 +351,9 @@ int main()
                 camera.SetFirstPersonShake(carPos, carAfgeleide, realUp, right, currentFrame, carSpeed);
             }
 
-            //glm::vec3 camPos = camera.Position;
-            //std::cout << "X: " << camPos.x << "  |  Y: " << camPos.y << "  |  Z: " << camPos.z << "\n";
+            // Debug functie die de camera positie print
+            // glm::vec3 camPos = camera.Position;
+            // std::cout << "X: " << camPos.x << "  |  Y: " << camPos.y << "  |  Z: " << camPos.z << "\n";
 
             // ---- PASS 1: render scene naar hdrFBO ----
             glBindFramebuffer(GL_FRAMEBUFFER, hdrFBO);
@@ -336,11 +395,16 @@ int main()
             myModel.DrawCar(myShader, steeringAngleDeg, distanceTravelled);
 
             // ---- Draw debug path ----
-            //myShader.setMat4("model", glm::mat4(1.0f));
-            //glBindVertexArray(pathMesh.VAO);
-            //glDrawArrays(GL_LINE_STRIP, 0, pathMesh.vertCount);
-            //glBindVertexArray(0);
-
+            if (!hideBC)
+            {
+                myShader.setMat4("model", glm::mat4(1.0f));
+                glBindVertexArray(pitstopPathMesh.VAO);
+                glDrawArrays(GL_LINE_STRIP, 0, pitstopPathMesh.vertCount);
+                glBindVertexArray(0);
+                glBindVertexArray(pathMesh.VAO);
+                glDrawArrays(GL_LINE_STRIP, 0, pathMesh.vertCount);
+                glBindVertexArray(1);
+            }
             skybox.Draw(view, projection);
             glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
@@ -379,12 +443,26 @@ int main()
             glBindVertexArray(quadVAO);
             glDrawArrays(GL_TRIANGLES, 0, 6);
 
+            
+
+            // ---- PASS 4: HUD Element ----
+            if (!hideHud)
+            {
+                glDisable(GL_DEPTH_TEST);
+                hud.Draw(camMode);
+                glEnable(GL_DEPTH_TEST);
+            }
+            
+            
+
             glfwSwapBuffers(window);
         }
 
         // ---- Cleanup GPU resources ----
         glDeleteVertexArrays(1, &pathMesh.VAO);
         glDeleteBuffers(1, &pathMesh.VBO);
+        glDeleteVertexArrays(1, &pitstopPathMesh.VAO);
+        glDeleteBuffers(1, &pitstopPathMesh.VBO);
         glDeleteVertexArrays(1, &quadVAO);
         glDeleteBuffers(1, &quadVBO);
         glDeleteFramebuffers(1, &hdrFBO);

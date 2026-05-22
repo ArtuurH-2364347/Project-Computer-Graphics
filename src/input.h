@@ -8,12 +8,20 @@
 //  GLOBALS
 // -----------------------------------------------------------------------
 extern char speedIncrease;
-extern Camera  camera;
 extern float   deltaTime;
+
+extern Camera  camera;
 extern CamMode camMode;
+
 extern bool filterBlur;
 extern bool filterSharpen;
 extern bool filterScanline;
+
+extern bool hideHud;
+
+extern bool pitstop;
+
+extern bool hideBC;
 
 // -----------------------------------------------------------------------
 //  CALLBACKS
@@ -45,7 +53,7 @@ inline void processInput(GLFWwindow* window)
     // cycle door de cam modes met TAB
     bool tabNow = (glfwGetKey(window, GLFW_KEY_TAB) == GLFW_PRESS);
     if (tabNow && !tabWasPressed)
-        camMode = static_cast<CamMode>((camMode + 1) % 3);
+        camMode = static_cast<CamMode>((camMode + 1) % 4);
     tabWasPressed = tabNow;
 
     static bool fWas = false, gWas = false, hWas = false, jWas = false;
@@ -59,7 +67,34 @@ inline void processInput(GLFWwindow* window)
     if (jNow && !jWas) filterScanline = !filterScanline;
 
     fWas = fNow; gWas = gNow; jWas = jNow;
-    
+
+    // hud hiding
+    static bool hideHudWas = false;
+    bool toggleHudNow = glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS;
+
+    if (toggleHudNow && !hideHudWas)
+        hideHud = !hideHud;
+
+    hideHudWas = toggleHudNow;
+
+    // pitsop call
+    static bool pitLast = false;
+    bool pitNow = glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS;
+
+    if (pitNow && !pitLast)
+        pitstop = !pitstop;
+
+    pitLast = pitNow;
+
+    // bezier curve hiding
+    static bool hideBCWas = false;
+    bool toggleBCNow = glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS;
+
+    if (toggleBCNow && !hideBCWas)
+        hideBC = !hideBC;
+
+    hideBCWas = toggleBCNow;
+
     // Free-cam movement
     if (camMode == CAM_FREE)
     {

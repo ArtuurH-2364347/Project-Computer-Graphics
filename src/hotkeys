@@ -1,0 +1,120 @@
+HOTKEYS:
+
+    Global:
+        
+        - TAB    =>   Toggle Camera Mode
+
+        - F      =>   Toggle Sharpen Filter 
+        - G      =>   Toggle Blur Filter 
+        - J      =>   Toggle Scanline Filter 
+
+        - H      =>   Toggle HUD (to be implemented)
+        - C      =>   Toggle Chroma-Keying Display (to be implemented)
+
+        - P      =>   Toggle Pitstop (to be implemented)
+        - O      =>   Hide/Show Other Cars (to be implemented)
+        - B      =>   Hide/Show Bezier-curve (to be implemented)
+
+    First Person:
+
+        - Z/W    =>   Fast forward
+        - S      =>   Slow Down
+        - SHIFT  =>   Reverse
+        - SPACE  =>   Brake
+
+
+    Free Cam:
+
+        - Z/W    =>   Move Forward
+        - S      =>   Move Backward
+        - Q/D    =>   Move Left and Right
+        - SHIFT  =>   Go Down (Relative, not global down)
+        - SHIFT  =>   Go Up (Relative, not global up)
+
+
+
+
+
+-------------------  vvv  Picture taking zone  vvv  -----------------------------------------------------------
+
+
+HOTKEYS - FIRST PERSON
+    Global:
+
+        - H      =>   Toggle HUD        
+        - TAB    =>   Toggle Camera Mode
+
+        - F      =>   Toggle Sharpen Filter 
+        - G      =>   Toggle Blur Filter 
+        - J      =>   Toggle Scanline Filter
+
+        - P      =>   Toggle Pitstop
+        - O      =>   Hide/Show Other Cars
+        - B      =>   Hide/Show Bezier-curve
+
+    First Person:
+
+        - Z/W    =>   Fast forward
+        - S      =>   Slow Down
+        - SHIFT  =>   Reverse
+        - SPACE  =>   Brake
+
+*Different cameras have different settings
+
+
+
+
+HOTKEYS - THIRD PERSON
+    Global:
+
+        - H      =>   Toggle HUD        
+        - TAB    =>   Toggle Camera Mode
+
+        - C      =>   Toggle Chroma-Keying Display
+
+        - F      =>   Toggle Sharpen Filter 
+        - G      =>   Toggle Blur Filter 
+        - J      =>   Toggle Scanline Filter
+
+        - P      =>   Toggle Pitstop
+        - O      =>   Hide/Show Other Cars
+        - B      =>   Hide/Show Bezier-curve
+
+*Different cameras have different settings
+
+
+
+
+
+HOTKEYS - FREE CAM
+    Global:
+
+        - H      =>   Toggle HUD        
+        - TAB    =>   Toggle Camera Mode
+
+        - C      =>   Toggle Chroma-Keying Display
+
+        - F      =>   Toggle Sharpen Filter 
+        - G      =>   Toggle Blur Filter 
+        - J      =>   Toggle Scanline Filter
+
+        - P      =>   Toggle Pitstop
+        - O      =>   Hide/Show Other Cars
+        - B      =>   Hide/Show Bezier-curve
+
+    Free Cam:
+
+        - Z/W    =>   Move Forward
+        - S      =>   Move Backward
+        - Q/D    =>   Move Left and Right
+        - SHIFT  =>   Go Down (Relative, not global down)
+        - SHIFT  =>   Go Up (Relative, not global up)
+
+*Different cameras have different settings
+
+
+
+
+
+
+
