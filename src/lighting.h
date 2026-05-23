@@ -75,3 +75,17 @@ inline std::vector<PointLight> buildSceneLights()
 
     return lights;
 }
+
+inline void applyLights(Shader& shader, const std::vector<PointLight>& lights)
+{
+    for (int i = 0; i < (int)lights.size(); i++)
+    {
+        std::string base = "pointLights[" + std::to_string(i) + "].";
+        shader.setVec3 (base + "position",  lights[i].position);
+        shader.setVec3 (base + "color",     lights[i].color);
+        shader.setFloat(base + "intensity", lights[i].intensity);
+        shader.setFloat(base + "constant",  lights[i].constant);
+        shader.setFloat(base + "linear",    lights[i].linear);
+        shader.setFloat(base + "quadratic", lights[i].quadratic);
+    }
+}

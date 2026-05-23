@@ -413,17 +413,7 @@ int main()
             myShader.use();
 
             // ---- lighting ----
-            myShader.setVec3("viewPos", camera.Position);
-            for (int i = 0; i < (int)sceneLights.size(); i++) {
-                string base = "pointLights[" + to_string(i) + "].";
-                myShader.setVec3 (base + "position",  sceneLights[i].position);
-                myShader.setVec3 (base + "color",     sceneLights[i].color);
-                myShader.setFloat(base + "intensity", sceneLights[i].intensity);
-                myShader.setFloat(base + "constant",  sceneLights[i].constant);
-                myShader.setFloat(base + "linear",    sceneLights[i].linear);
-                myShader.setFloat(base + "quadratic", sceneLights[i].quadratic);
-            }
-
+            applyLights(myShader, sceneLights);
             myShader.setMat4("view",       view);
             myShader.setMat4("projection", projection);
 
