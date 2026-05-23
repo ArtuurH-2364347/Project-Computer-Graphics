@@ -339,29 +339,15 @@ int main()
             distanceTravelled += glm::abs(carSpeed) * deltaTime;
 
             // ---- auto positie en draai ----
-            float currentTrackLength;
-
-            currentTrackLength = nbrCircuitLength;
-            if (pitstop)
-            {
-                currentTrackLength = pitstopCircuitLength;
-            }
+            float currentTrackLength = pitstop ? pitstopCircuitLength : nbrCircuitLength;
+            auto& activeArcTable     = pitstop ? pitstopArcTable      : nbrArcTable;
 
             while (distanceTravelled < 0.0f)
                 distanceTravelled += currentTrackLength;
-
             while (distanceTravelled >= currentTrackLength)
                 distanceTravelled -= currentTrackLength;
 
-            float t;
-            if (!pitstop)
-            {
-                t = calculateDistanceAlongTrack(nbrArcTable, distanceTravelled);
-            }
-            else
-            {
-                t = calculateDistanceAlongTrack(pitstopArcTable, distanceTravelled);
-            }
+            float t = calculateDistanceAlongTrack(activeArcTable, distanceTravelled);
 
             if (legacyDriving)
             {
@@ -370,32 +356,18 @@ int main()
             }
             
 
-            float curvature = sampleCurvature(nbrCircuit, t);
-            if (pitstop)
-            {
-                curvature = sampleCurvature(pitstopCircuit, t);
-            }
+            auto& activeCircuit = pitstop ? pitstopCircuit : nbrCircuit;
 
-            float steeringAngleDeg = glm::clamp(-curvature * 1200.0f, -90.0f, 90.0f);
+            float     curvature   = sampleCurvature(activeCircuit, t);
+            float     steeringAngleDeg = glm::clamp(-curvature * 1200.0f, -90.0f, 90.0f);
+            glm::vec3 carAfgeleide = sampleCircuitAfgeleide(activeCircuit, t);
+            glm::vec3 carPos       = sampleCircuit(activeCircuit, t);
 
-            glm::vec3 carAfgeleide = sampleCircuitAfgeleide(nbrCircuit, t);
-            if (pitstop)
+            if (pitstop &&
+                carPos.x < -110 && carPos.x > -130 &&
+                carPos.z <  113 && carPos.z >   93)
             {
-                carAfgeleide = sampleCircuitAfgeleide(pitstopCircuit, t);
-            }
-
-            glm::vec3 carPos;
-            carPos = sampleCircuit(nbrCircuit, t);
-            if (pitstop) 
-            {
-                carPos = sampleCircuit(pitstopCircuit, t);
-                if (carPos.x < -110 &&
-                    carPos.x > -130 &&
-                    carPos.z < 113 &&
-                    carPos.z > 93)
-                {
-                    carSpeed *= 0.1;
-                }
+                carSpeed *= 0.1f;
             }
             
             glm::vec3 up     = glm::vec3(0.0f, 1.0f, 0.0f);
@@ -478,13 +450,12 @@ int main()
                 glBindVertexArray(0);
                 glBindVertexArray(pathMesh.VAO);
                 glDrawArrays(GL_LINE_STRIP, 0, pathMesh.vertCount);
-                glBindVertexArray(1);
+                glBindVertexArray(0);
             }
             skybox.Draw(view, projection);
             glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-            // ---- PASS 2: ping-pong blur op bright buffer ----
-
+            // ---- PASS 2: blur op bright buffer ----
             bool horizontal = true;
             blurShader.use();
             blurShader.setInt("image", 0);
@@ -518,7 +489,7 @@ int main()
             glBindVertexArray(quadVAO);
             glDrawArrays(GL_TRIANGLES, 0, 6);
 
-                        // ---- PASS 4: HUD Element & Chroma Keying ----
+             // ---- PASS 4: HUD Element & Chroma Keying ----
             // chroma key
             if (chromaKeyActive)
             {
