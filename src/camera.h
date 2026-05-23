@@ -7,6 +7,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "cammode.h"
+#include "config.h"
 
 using namespace std;
 
@@ -193,5 +195,31 @@ private:
     }
 };
 
+inline void updateCamera(Camera& camera, CamMode camMode,
+                         glm::vec3 carPos, glm::vec3 carAfgeleide,
+                         glm::vec3 realUp, glm::vec3 right,
+                         float currentFrame, float carSpeed)
+{
+    glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+
+    if (camMode == CAM_FOLLOW)
+    {
+        glm::vec3 camPos    = carPos - carAfgeleide * CAM_DISTANCE
+                                     + glm::vec3(0.0f, CAM_HEIGHT, 0.0f);
+        glm::vec3 camTarget = carPos + carAfgeleide * CAM_DISTANCE;
+        camera.SetLookAt(camPos, camTarget, up);
+    }
+    else if (camMode == CAM_CINEMATIC)
+    {
+        glm::vec3 camPos    = carPos - carAfgeleide * CAM_DISTANCE + 70.0f
+                                     + glm::vec3(3.0f, CAM_HEIGHT, 0.0f);
+        glm::vec3 camTarget = carPos + carAfgeleide * CAM_DISTANCE;
+        camera.SetLookAt(camPos, camTarget, up);
+    }
+    else if (camMode == CAM_FIRST_PERSON)
+    {
+        camera.SetFirstPersonShake(carPos, carAfgeleide, realUp, right, currentFrame, carSpeed);
+    }
+}
 
 #endif

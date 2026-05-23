@@ -379,24 +379,7 @@ int main()
             rotMat[1] = glm::vec4(realUp, 0.0f);
             rotMat[2] = glm::vec4(carAfgeleide, 0.0f);
 
-            if (camMode == CAM_FOLLOW)
-            {
-                glm::vec3 camPos    = carPos - carAfgeleide * CAM_DISTANCE
-                                            + glm::vec3(0.0f, CAM_HEIGHT + 0.0f, 0.0f);
-                glm::vec3 camTarget = carPos + carAfgeleide * CAM_DISTANCE;
-                camera.SetLookAt(camPos, camTarget, up);
-            }
-            else if (camMode == CAM_CINEMATIC)
-            {
-                glm::vec3 camPos = carPos - carAfgeleide * CAM_DISTANCE + 70.0f 
-                                            + glm::vec3(3.0f, CAM_HEIGHT, 0.0f);
-                glm::vec3 camTarget = carPos + carAfgeleide * CAM_DISTANCE;
-                camera.SetLookAt(camPos, camTarget, up);
-            }
-            else if (camMode == CAM_FIRST_PERSON)
-            {
-                camera.SetFirstPersonShake(carPos, carAfgeleide, realUp, right, currentFrame, carSpeed);
-            }
+            updateCamera(camera, camMode, carPos, carAfgeleide, realUp, right, currentFrame, carSpeed);
 
             // Debug functie die de camera positie print
             // glm::vec3 camPos = camera.Position;

@@ -412,6 +412,8 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: \
  /usr/include/c++/15/x86_64-redhat-linux/bits/c++io.h \
  /usr/include/c++/15/bits/fstream.tcc \
  /home/ASCII/Project-Computer-Graphics/include/../src/camera.h \
+ /home/ASCII/Project-Computer-Graphics/include/../src/cammode.h \
+ /home/ASCII/Project-Computer-Graphics/include/../src/config.h \
  /home/ASCII/Project-Computer-Graphics/include/../src/mesh.h \
  /home/ASCII/Project-Computer-Graphics/include/../src/model.h \
  /home/ASCII/Project-Computer-Graphics/include/assimp/Importer.hpp \
@@ -458,8 +460,6 @@ CMakeFiles/F1_Project.dir/src/main.cpp.o: \
  /usr/include/c++/15/bits/erase_if.h \
  /home/ASCII/Project-Computer-Graphics/src/circuit.h \
  /home/ASCII/Project-Computer-Graphics/src/input.h \
- /home/ASCII/Project-Computer-Graphics/src/cammode.h \
  /home/ASCII/Project-Computer-Graphics/src/lighting.h \
- /home/ASCII/Project-Computer-Graphics/src/config.h \
  /home/ASCII/Project-Computer-Graphics/src/skybox/skybox.h \
  /home/ASCII/Project-Computer-Graphics/include/../src/hud/hud.h
