@@ -18,15 +18,15 @@ extern bool filterSharpen;
 extern bool filterScanline;
 
 extern bool hideHud;
-
 extern bool pitstop;
-
 extern bool hideBC;
+extern bool chromaKeyActive;
+extern bool legacyDriving;
 
 // -----------------------------------------------------------------------
 //  CALLBACKS
 // -----------------------------------------------------------------------
-inline void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+inline void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
 }
@@ -94,6 +94,24 @@ inline void processInput(GLFWwindow* window)
         hideBC = !hideBC;
 
     hideBCWas = toggleBCNow;
+
+    // chroma keying hiding
+    static bool hideKCWas = false;
+    bool toggleKCNow = glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS;
+
+    if (toggleKCNow && !hideKCWas)
+        chromaKeyActive = !chromaKeyActive;
+
+    hideKCWas = toggleKCNow;
+
+    // legacyDriving toggle
+    static bool LDWas = false;
+    bool toggleLDNow = glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS;
+
+    if (toggleLDNow && !LDWas)
+        legacyDriving = !legacyDriving;
+
+    LDWas = toggleLDNow;
 
     // Free-cam movement
     if (camMode == CAM_FREE)

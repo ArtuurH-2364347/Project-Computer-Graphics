@@ -47,7 +47,7 @@ float  deltaTime = 0.0f;
 float  lastFrame = 0.0f;
 char speedIncrease = 'n'; // nothing
 
-//hud toggle
+// hud toggle
 bool hideHud = false;
 
 // pitsop
@@ -61,10 +61,16 @@ bool filterBlur     = false;
 bool filterSharpen  = false;
 bool filterScanline = false;
 
-// -----------------------------------------------------------------------
-//  PATH DEBUG LINE
-// -----------------------------------------------------------------------
-struct PathMesh
+// chroma key toggle
+bool chromaKeyActive = false;
+
+// legacy driving toggle
+bool legacyDriving = false;
+
+    // -----------------------------------------------------------------------
+    //  PATH DEBUG LINE
+    // -----------------------------------------------------------------------
+    struct PathMesh
 {
     unsigned int VAO, VBO;
     int          vertCount;
@@ -167,6 +173,15 @@ int main()
         // Build circuit & GPU path mesh & lighting
         vector<BezierSegment> nbrCircuit = buildNBRCircuit();
         vector<BezierSegment> pitstopCircuit = buildNBRCircuit(true);
+
+        auto nbrArcTable = buildArcLengthTable(nbrCircuit);
+        float nbrCircuitLength =
+            nbrArcTable.back().distance;
+
+        auto pitstopArcTable = buildArcLengthTable(pitstopCircuit);
+        float pitstopCircuitLength =
+            pitstopArcTable.back().distance;
+
         vector<PointLight> sceneLights = buildSceneLights();
         PathMesh pathMesh = buildPathMesh(nbrCircuit);
         PathMesh pitstopPathMesh = buildPathMesh(pitstopCircuit);
@@ -245,9 +260,37 @@ int main()
 
         Shader postShader("src/shader/post.vs", "src/shader/post.fs");
 
+        //Hud implementation
         Hud hud;
         hud.setupHud(camMode);
-        
+
+        // ---- chroma keying shader ----
+        Shader chromaKeyShader("src/shader/chromaKey.vs", "src/shader/chromaKey.fs");
+
+        unsigned int CKTexture;
+        glGenTextures(1, &CKTexture);
+        glBindTexture(GL_TEXTURE_2D, CKTexture);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+        int width, height, nrChannels;
+        unsigned char *CKdata = stbi_load("models/chroma_keying/ChromaOverlay.png", &width, &height, &nrChannels, 0);
+        if (CKdata)
+        {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, CKdata);
+            glGenerateMipmap(GL_TEXTURE_2D);
+            stbi_image_free(CKdata);
+        }
+        else
+        {
+            std::cout << "Chroma key texture failed to load: " << std::endl;
+            stbi_image_free(CKdata);
+        }
+
         
 
         // --------------------------------------------------------------
@@ -262,10 +305,15 @@ int main()
             // ---- input ----
             processInput(window);
             glfwPollEvents();
-
+            
             // ---- auto vooruit doen ---- (en een beetje interactie)
 
             float carSpeed = CAR_SPEED * 0.6f;
+
+            if (legacyDriving)
+            {
+                carSpeed = 1.2f * 0.6f;
+            }
 
             switch (speedIncrease)
             {
@@ -285,44 +333,71 @@ int main()
                 break;
             }
 
-            carT += carSpeed * deltaTime;
+            carT += carSpeed * deltaTime; // legacy code for past (and future) implementations
             if (carT >= (float)NUM_SEGMENTS)
                 carT -= (float)NUM_SEGMENTS;
             distanceTravelled += glm::abs(carSpeed) * deltaTime;
-            
-            
-            float curvature = sampleCurvature(nbrCircuit, carT);
+
+            // ---- auto positie en draai ----
+            float currentTrackLength;
+
+            currentTrackLength = nbrCircuitLength;
             if (pitstop)
             {
-                curvature = sampleCurvature(pitstopCircuit, carT);
+                currentTrackLength = pitstopCircuitLength;
+            }
+
+            while (distanceTravelled < 0.0f)
+                distanceTravelled += currentTrackLength;
+
+            while (distanceTravelled >= currentTrackLength)
+                distanceTravelled -= currentTrackLength;
+
+            float t;
+            if (!pitstop)
+            {
+                t = calculateDistanceAlongTrack(nbrArcTable, distanceTravelled);
+            }
+            else
+            {
+                t = calculateDistanceAlongTrack(pitstopArcTable, distanceTravelled);
+            }
+
+            if (legacyDriving)
+            {
+                t = carT;
+                carSpeed = 1.2f * 0.6f;
+            }
+            
+
+            float curvature = sampleCurvature(nbrCircuit, t);
+            if (pitstop)
+            {
+                curvature = sampleCurvature(pitstopCircuit, t);
             }
 
             float steeringAngleDeg = glm::clamp(-curvature * 1200.0f, -90.0f, 90.0f);
 
-
-            // ---- auto positie en draai ----
-            glm::vec3 carPos;
-            if (!pitstop)
+            glm::vec3 carAfgeleide = sampleCircuitAfgeleide(nbrCircuit, t);
+            if (pitstop)
             {
-                carPos = sampleCircuit(nbrCircuit, carT);
+                carAfgeleide = sampleCircuitAfgeleide(pitstopCircuit, t);
             }
-            else {
-                carPos = sampleCircuit(pitstopCircuit, carT);
-                if (-122 > carPos.x > -118 && 105 > carPos.z > 101)
+
+            glm::vec3 carPos;
+            carPos = sampleCircuit(nbrCircuit, t);
+            if (pitstop) 
+            {
+                carPos = sampleCircuit(pitstopCircuit, t);
+                if (carPos.x < -110 &&
+                    carPos.x > -130 &&
+                    carPos.z < 113 &&
+                    carPos.z > 93)
                 {
                     carSpeed *= 0.1;
                 }
-                
             }
             
-
-            glm::vec3 carAfgeleide = sampleCircuitAfgeleide(nbrCircuit, carT);
-            if (pitstop)
-            {
-                carAfgeleide = sampleCircuitAfgeleide(pitstopCircuit, carT);
-            }
-            
-
             glm::vec3 up     = glm::vec3(0.0f, 1.0f, 0.0f);
             glm::vec3 right = glm::normalize(glm::cross(carAfgeleide, up));
             glm::vec3 realUp = glm::cross(right, carAfgeleide);
@@ -341,7 +416,7 @@ int main()
             }
             else if (camMode == CAM_CINEMATIC)
             {
-                glm::vec3 camPos = carPos - carAfgeleide * CAM_DISTANCE + 50.0f 
+                glm::vec3 camPos = carPos - carAfgeleide * CAM_DISTANCE + 70.0f 
                                             + glm::vec3(3.0f, CAM_HEIGHT, 0.0f);
                 glm::vec3 camTarget = carPos + carAfgeleide * CAM_DISTANCE;
                 camera.SetLookAt(camPos, camTarget, up);
@@ -443,16 +518,28 @@ int main()
             glBindVertexArray(quadVAO);
             glDrawArrays(GL_TRIANGLES, 0, 6);
 
-            
+                        // ---- PASS 4: HUD Element & Chroma Keying ----
+            // chroma key
+            if (chromaKeyActive)
+            {
+                glDisable(GL_DEPTH_TEST);
+                chromaKeyShader.use();
 
-            // ---- PASS 4: HUD Element ----
+                chromaKeyShader.setInt("CKTexture", 0);
+                glActiveTexture(GL_TEXTURE0);
+                glBindTexture(GL_TEXTURE_2D, CKTexture);
+                glBindVertexArray(quadVAO);
+                glDrawArrays(GL_TRIANGLES, 0, 6);
+                glEnable(GL_DEPTH_TEST);
+            }
+
             if (!hideHud)
             {
                 glDisable(GL_DEPTH_TEST);
                 hud.Draw(camMode);
                 glEnable(GL_DEPTH_TEST);
             }
-            
+
             
 
             glfwSwapBuffers(window);

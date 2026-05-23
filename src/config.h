@@ -10,7 +10,7 @@ constexpr int   SCREEN_HEIGHT = 800;
 //  CAR
 // -----------------------------------------------------------------------
 constexpr float CAR_SIZE  = 1.2f;
-constexpr float CAR_SPEED = 1.2f;
+constexpr float CAR_SPEED = 100.0f;
 
 // -----------------------------------------------------------------------
 //  CAMERA

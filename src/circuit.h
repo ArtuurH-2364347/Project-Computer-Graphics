@@ -8,7 +8,6 @@
 //  BEZIER STRUCTS & MATH
 // -----------------------------------------------------------------------
 
-
 struct BezierSegment
 {
     glm::vec3 P0; // start
@@ -290,3 +289,77 @@ inline float sampleCurvature(const std::vector<BezierSegment>& circuit, float gl
 
     return cross2D / (speed * speed * speed);
 }
+
+// -----------------------------------------------------------------------
+//  CORRECT CIRCUIT DRIVING
+// -----------------------------------------------------------------------
+
+struct ArcLengthSample
+{
+    float t;
+    float distance;
+};
+
+std::vector<ArcLengthSample> buildArcLengthTable(
+    const std::vector<BezierSegment> &circuit,
+    int samplesPerSegment = 100)
+{
+    std::vector<ArcLengthSample> table;
+
+    glm::vec3 prev = sampleCircuit(circuit, 0.0f);
+
+    float totalDistance = 0.0f;
+
+    table.push_back({0.0f, 0.0f});
+
+    int totalSamples =
+        (int)circuit.size() * samplesPerSegment;
+
+    for (int i = 1; i <= totalSamples; i++)
+    {
+        float t =
+            (float)i / totalSamples * (float)circuit.size();
+
+        glm::vec3 p = sampleCircuit(circuit, t);
+
+        totalDistance += glm::distance(prev, p);
+
+        table.push_back({t, totalDistance});
+
+        prev = p;
+    }
+
+    return table;
+}
+
+float calculateDistanceAlongTrack(
+    const std::vector<ArcLengthSample> &table,
+    float distance)
+{
+    if (distance <= 0.0f)
+        return 0.0f;
+
+    if (distance >= table.back().distance)
+        return table.back().t;
+
+    auto it = std::lower_bound(
+        table.begin(),
+        table.end(),
+        distance,
+        [](const ArcLengthSample &s, float d)
+        {
+            return s.distance < d;
+        });
+
+    int index = (int)(it - table.begin());
+
+    const ArcLengthSample &a = table[index - 1];
+    const ArcLengthSample &b = table[index];
+
+    float alpha =
+        (distance - a.distance) /
+        (b.distance - a.distance);
+
+    return glm::mix(a.t, b.t, alpha);
+}
+

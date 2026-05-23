@@ -12,4 +12,3 @@ void main()
     vec4 texColor = vec4(vec3(texture(hudTexture, TexCoord)), alphaValue);
     FragColor = texColor;
 }
-
