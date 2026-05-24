@@ -119,15 +119,6 @@ inline void processInput(GLFWwindow* window)
 
     hideHudWas = toggleHudNow;
 
-    // pitsop call
-    static bool pitLast = false;
-    bool pitNow = glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS;
-
-    if (pitNow && !pitLast)
-        pitstop = !pitstop;
-
-    pitLast = pitNow;
-
     // bezier curve hiding
     static bool hideBCWas = false;
     bool toggleBCNow = glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS;

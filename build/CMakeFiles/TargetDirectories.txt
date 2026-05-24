@@ -1,3 +1,0 @@
-C:/Stuf/UHasselt/_2BA/Computer_Graphics/Project_OpenGL/Project-Computer-Graphics/build/CMakeFiles/F1_Project.dir
-C:/Stuf/UHasselt/_2BA/Computer_Graphics/Project_OpenGL/Project-Computer-Graphics/build/CMakeFiles/ALL_BUILD.dir
-C:/Stuf/UHasselt/_2BA/Computer_Graphics/Project_OpenGL/Project-Computer-Graphics/build/CMakeFiles/ZERO_CHECK.dir
