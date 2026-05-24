@@ -5,10 +5,11 @@
         "name": "Run F1 Project",
         "type": "cppdbg",
         "request": "launch",
-        "program": "${workspaceFolder}/build/release/F1_Project",
+        "program": "${workspaceFolder}/build/F1_Project",
         "preLaunchTask": "cmake-build",
         "cwd": "${workspaceFolder}",
         "MIMode": "gdb"
       }
     ]
   }
+  

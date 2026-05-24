@@ -3,12 +3,15 @@ project(F1_GraphicsProject)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
-add_subdirectory(external/assimp)
+#set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
+#add_subdirectory(external/assimp)
+
+#find_package(assimp REQUIRED)
 
 # 1. Zoek GLFW (deze heeft wel een config file)
-set(GLFW_BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
-add_subdirectory(external/glfw)
+#set(GLFW_BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
+# add_subdirectory(external/glfw)
+#find_package(glfw REQUIRED)
 
 include_directories(/include)
 
