@@ -155,15 +155,15 @@ int main()
     {
         // ---- Model and Shader Declaration ----
         Shader myShader("src/shader/shader.vs", "src/shader/shader.fs");
-        Model  myModel(filesystem::path("models/2021_F1_Mercedes-Benz_W12/2021_F1_Mercedes-Benz_W12.obj")); // => obj file
-        // Model myModel(filesystem::path("models/2021_f1_mercedes-benz_w12_gLTF/scene.gltf")); // => gltf file
+        Model  myModel(filesystem::path("models/2021_F1_Mercedes-Benz_W12/2021_F1_Mercedes-Benz_W12.obj").string()); // => obj file
+        // Model myModel(filesystem::path("models/2021_f1_mercedes-benz_w12_gLTF/scene.gltf").string()); // => gltf file
 
         // ---- Track Laden en Aanpassen ----
-        Model myTrack(filesystem::path("models/nurburgring_race_driver_grid_ds_gltf/scene.gltf"));
+        Model myTrack(filesystem::path("models/nurburgring_race_driver_grid_ds_gltf/scene.gltf").string());
         glm::vec3 circuitPos = glm::vec3(-420.0f, -20.0f, 390.0f);
 
         // ---- Tires Laden en Aanpassen
-        Model myTires(filesystem::path("models/tire-stack/source/Untitled3.obj"));
+        Model myTires(filesystem::path("models/tire-stack/source/Untitled3.obj").string());
         tireStackPos = glm::vec3(120.0f, 0.75f, -250.9f);
 
         std::vector<std::string> skyFaces = {

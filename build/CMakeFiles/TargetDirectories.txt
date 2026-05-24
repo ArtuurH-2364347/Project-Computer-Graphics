@@ -1,3 +1,0 @@
-/home/ASCII/Project-Computer-Graphics/build/CMakeFiles/F1_Project.dir
-/home/ASCII/Project-Computer-Graphics/build/CMakeFiles/edit_cache.dir
-/home/ASCII/Project-Computer-Graphics/build/CMakeFiles/rebuild_cache.dir

@@ -3,10 +3,12 @@ project(F1_GraphicsProject)
 
 set(CMAKE_CXX_STANDARD 17)
 
-find_package(assimp REQUIRED)
+set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
+add_subdirectory(external/assimp)
 
 # 1. Zoek GLFW (deze heeft wel een config file)
-find_package(glfw3 REQUIRED)
+set(GLFW_BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
+add_subdirectory(external/glfw)
 
 include_directories(/include)
 
@@ -17,4 +19,5 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 add_executable(F1_Project src/main.cpp glad.c src/stb_imageDefinition.cpp)
 
 # 5. Linken aan GLFW en de standaard OpenGL library van Linux
-target_link_libraries(F1_Project glfw GL assimp)
+# target_link_libraries(F1_Project glfw GL assimp) # => linux
+target_link_libraries(F1_Project glfw opengl32 assimp) # => linux
