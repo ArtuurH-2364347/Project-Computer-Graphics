@@ -58,7 +58,6 @@ public:
         updateCameraVectors();
     }
 
-    // returns the view matrix calculated using Euler Angles and the LookAt Matrix
     glm::mat4 GetViewMatrix()
     {
         return glm::lookAt(Position, Position + Front, WorldUp);
@@ -75,17 +74,17 @@ public:
     void ProcessKeyboard(Camera_Movement direction, float deltaTime)
     {
         float velocity = SPEED * deltaTime;
-        if (direction == FORWARD) //move forward
+        if (direction == FORWARD)
             Position += Front * velocity;
-        if (direction == BACKWARD) // move backward
+        if (direction == BACKWARD)
             Position -= Front * velocity;
-        if (direction == LEFT) // move left
+        if (direction == LEFT)
             Position -= Right * velocity;
-        if (direction == RIGHT) // move right
+        if (direction == RIGHT)
             Position += Right * velocity;
-        if (direction == UP) // move up (relative to front)
+        if (direction == UP)
             Position += Up * velocity;
-        if (direction == DOWN) // move down (relative to front)
+        if (direction == DOWN)
             Position -= Up * velocity;
     }
 
@@ -101,7 +100,7 @@ public:
         }
 
         offsetX = dirX1 - dirX0;
-        offsetY = dirY0 - dirY1; // reversed since y-coordinates go from bottom to top
+        offsetY = dirY0 - dirY1;
 
         dirX0 = dirX1;
         dirY0 = dirY1;
@@ -112,13 +111,11 @@ public:
         Yaw += offsetX;
         Pitch += offsetY;
 
-        // make sure that when pitch is out of bounds, screen doesn't get flipped
         if (Pitch > 89.0f)
             Pitch = 89.0f;
         if (Pitch < -89.0f)
             Pitch = -89.0f;
 
-        // update Front, Right and Up Vectors using the updated Euler angles
         updateCameraVectors();
     }
 
@@ -180,18 +177,14 @@ public:
     }
 
 private:
-    // calculates the front vector from the Camera's (updated) Euler Angles
     void updateCameraVectors()
     {
-        // calculate the new Front vector
         glm::vec3 front;
         front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
         front.y = sin(glm::radians(Pitch));
         front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
         Front = glm::normalize(front);
-        // also re-calculate the Right and Up vector
-        Right = glm::normalize(glm::cross(Front, WorldUp)); // normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
-        Up = glm::normalize(glm::cross(Right, Front));
+        Right = glm::normalize(glm::cross(Front, WorldUp)); 
     }
 };
 

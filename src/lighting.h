@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 #include <vector>
-#include <cstdlib> // Voor rand()
+#include <cstdlib>
 #include "config.h"
 #include "circuit.h"
 
@@ -33,12 +33,12 @@ inline std::vector<PointLight> buildSceneLights()
         glm::vec3 right     = glm::normalize(glm::cross(afgeleide, up));
 
         float sideOffset = (i % 2 == 0) ? 6.0f : -6.0f;
-        float randomX = ((float)rand() / RAND_MAX) * 2.0f - 1.0f; // -1.0 tot 1.0
+        float randomX = ((float)rand() / RAND_MAX) * 2.0f - 1.0f;
         float randomZ = ((float)rand() / RAND_MAX) * 2.0f - 1.0f;
 
         pos += right * sideOffset;
         pos.x += randomX;
-        pos.y += heightAbove + (((float)rand() / RAND_MAX) * 1.5f); // Variërende hoogte
+        pos.y += heightAbove + (((float)rand() / RAND_MAX) * 1.5f);
         pos.z += randomZ;
 
         glm::vec3 color;
@@ -46,13 +46,13 @@ inline std::vector<PointLight> buildSceneLights()
 
         if (i % 5 == 0)
         {
-            // Super fel
+            // fellere lichten
             color     = glm::vec3(1.0f, 1.0f, 1.2f);
             intensity = 8.0f;
         }
         else
         {
-            // Normale lichten
+            // normale lichten
             color     = (i % 2 == 0) ? glm::vec3(1.0f, 0.85f, 0.65f) : glm::vec3(0.70f, 0.85f, 1.0f);
             intensity = 4.0f;
         }
@@ -63,8 +63,8 @@ inline std::vector<PointLight> buildSceneLights()
         light.intensity = intensity;
         
         if (i % 5 == 0) {
-            light.linear    = LIGHT_LINEAR * 0.8f;    // Schijnt verder
-            light.quadratic = LIGHT_QUADRATIC * 0.6f; // Neemt minder snel af
+            light.linear    = LIGHT_LINEAR * 0.8f;
+            light.quadratic = LIGHT_QUADRATIC * 0.6f;
         } else {
             light.linear    = LIGHT_LINEAR;
             light.quadratic = LIGHT_QUADRATIC;
