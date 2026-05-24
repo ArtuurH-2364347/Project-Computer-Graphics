@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Stuf\UHasselt\_2BA\Computer Graphics\Project_OpenGL\Project-Computer-Graphics\src\main.cpp">
+    <ClCompile Include="C:\Stuf\UHasselt\_2BA\Computer_Graphics\Project_OpenGL\Project-Computer-Graphics\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Stuf\UHasselt\_2BA\Computer Graphics\Project_OpenGL\Project-Computer-Graphics\glad.c">
+    <ClCompile Include="C:\Stuf\UHasselt\_2BA\Computer_Graphics\Project_OpenGL\Project-Computer-Graphics\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Stuf\UHasselt\_2BA\Computer Graphics\Project_OpenGL\Project-Computer-Graphics\src\stb_imageDefinition.cpp">
+    <ClCompile Include="C:\Stuf\UHasselt\_2BA\Computer_Graphics\Project_OpenGL\Project-Computer-Graphics\src\stb_imageDefinition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Stuf\UHasselt\_2BA\Computer Graphics\Project_OpenGL\Project-Computer-Graphics\CMakeLists.txt" />
+    <CustomBuild Include="C:\Stuf\UHasselt\_2BA\Computer_Graphics\Project_OpenGL\Project-Computer-Graphics\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{0D976CD2-8A0F-376D-BFCE-EE19441A62EE}</UniqueIdentifier>
+      <UniqueIdentifier>{7EFD7307-8589-3012-898C-416429DCFC99}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

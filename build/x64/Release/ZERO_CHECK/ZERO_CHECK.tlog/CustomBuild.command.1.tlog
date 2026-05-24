@@ -1,0 +1,10 @@
+^C:\STUF\UHASSELT\_2BA\COMPUTER_GRAPHICS\PROJECT_OPENGL\PROJECT-COMPUTER-GRAPHICS\BUILD\CMAKEFILES\AB9461ADFFC93AD98E693B4E4248A36F\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Stuf/UHasselt/_2BA/Computer_Graphics/Project_OpenGL/Project-Computer-Graphics -BC:/Stuf/UHasselt/_2BA/Computer_Graphics/Project_OpenGL/Project-Computer-Graphics/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Stuf/UHasselt/_2BA/Computer_Graphics/Project_OpenGL/Project-Computer-Graphics/build/F1_GraphicsProject.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
