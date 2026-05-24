@@ -37,7 +37,7 @@ De belichting bestaat uit 3 componenten, een ambient, een diffuse, en een specul
 Er zijn 3 verschillende filters verkrijgbaar:
 
 - Gaussian blur: we renderen de scene naar een texture en passen een gaussian-verdeling toe, we samplen horizontaal en verticaal apart wat efficienter is.
-- Laplacian filter: voor sharpening
+- Sharpening filter (Laplacian filter + Blur): voor sharpening
 - Scanline: Maakt simpelweg elke 3de lijn iets donkerder.
 
 ## Post-Processing
@@ -54,4 +54,5 @@ In de rechterbovenhoek van het scherm wordt er een hotkey legende getoond, hier 
 - Camera shake: deze via de verticale en horizontale positie van de camera elke frame een klein beetje te veranderen. Deze verandering komt door meerdere, overlapte sinus functies, om het herkenbare patroon van een enkele sinusfuncties te vermijden
 - Skybox: de achtergrond van de scene wordt gevormd door de "skybox", een kubus van 6 textures die rond de camera wordt geplaatst. Aangezien de locatie van deze kubus gelinked is aan de camera, en we de skybox altijd als laatste element renderen (het "diepst") krijgen we de illusie dat de lucht zich op een grote afstand bevindt en nooit bereikbaar is.
 - Het draaien van de wielen en het stuur: Verder uitgelegd in animation
+- 
 
