@@ -47,6 +47,8 @@ float  deltaTime = 0.0f;
 float  lastFrame = 0.0f;
 char speedIncrease = 'n'; // nothing
 
+glm::vec3 tireStackPos;
+
 // hud toggle
 bool hideHud = false;
 
@@ -67,9 +69,9 @@ bool chromaKeyActive = false;
 // legacy driving toggle
 bool legacyDriving = false;
 
-    // -----------------------------------------------------------------------
-    //  PATH DEBUG LINE
-    // -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
+//  PATH DEBUG LINE
+// -----------------------------------------------------------------------
     struct PathMesh
 {
     unsigned int VAO, VBO;
@@ -135,6 +137,7 @@ int main()
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetMouseButtonCallback(window, mouse_click_callback);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     // ---- Window Icon ----
@@ -155,11 +158,14 @@ int main()
         Model  myModel(filesystem::path("models/2021_F1_Mercedes-Benz_W12/2021_F1_Mercedes-Benz_W12.obj")); // => obj file
         // Model myModel(filesystem::path("models/2021_f1_mercedes-benz_w12_gLTF/scene.gltf")); // => gltf file
 
+        // ---- Track Laden en Aanpassen ----
         Model myTrack(filesystem::path("models/nurburgring_race_driver_grid_ds_gltf/scene.gltf"));
-
-        // ---- Track Aanpassingen ----
         glm::vec3 circuitPos = glm::vec3(-420.0f, -20.0f, 390.0f);
-        
+
+        // ---- Tires Laden en Aanpassen
+        Model myTires(filesystem::path("models/tire-stack/source/Untitled3.obj"));
+        tireStackPos = glm::vec3(120.0f, 0.75f, -250.9f);
+
         std::vector<std::string> skyFaces = {
             "models/skybox/right.jpg",
             "models/skybox/left.jpg",
@@ -191,7 +197,8 @@ int main()
         // auto animation state
         float carT     = 0.0f;
         float distanceTravelled = 0.0f;
-        //float carSpeed = 0;
+        float distanceTravelledAbs = 0.0f;
+        // float carSpeed = 0;
 
         // --- MRT framebuffer (scene + bright) ---
         unsigned int hdrFBO;
@@ -260,9 +267,86 @@ int main()
 
         Shader postShader("src/shader/post.vs", "src/shader/post.fs");
 
-        //Hud implementation
+        // ---- HUD implementation ----
         Hud hud;
         hud.setupHud(camMode);
+
+        // Cursor
+        float cursorVertices[] = {
+            // pos         // uv
+            -0.0025f, 0.004f, 0.0f, 1.0f,  // top left
+            -0.0025f, -0.004f, 0.0f, 0.0f, // bottom left
+            0.0025f, -0.004f, 1.0f, 0.0f,  // bottom right
+
+            -0.0025f, 0.004f, 0.0f, 1.0f, // top left
+            0.0025f, -0.004f, 1.0f, 0.0f, // bottom right
+            0.0025f, 0.004f, 1.0f, 1.0f   // top right
+        };
+
+        unsigned int cursorVAO, cursorVBO;
+        glGenVertexArrays(1, &cursorVAO);
+        glGenBuffers(1, &cursorVBO);
+        glBindVertexArray(cursorVAO);
+        glBindBuffer(GL_ARRAY_BUFFER, cursorVBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(cursorVertices), cursorVertices, GL_STATIC_DRAW);
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *)0);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *)(2 * sizeof(float)));
+        glEnableVertexAttribArray(1);
+        glBindVertexArray(0);
+
+        Shader cursorShader("src/hud/cursor.vs", "src/hud/cursor.fs");
+
+        // Pitstop icon
+        float psVertices[] = {
+            // pos         // uv
+            0.80f, 0.98f, 0.0f, 1.0f, // top left
+            0.80f, 0.78f, 0.0f, 0.0f, // bottom left
+            0.98f, 0.78f, 1.0f, 0.0f, // bottom right
+
+            0.80f, 0.98f, 0.0f, 1.0f, // top left
+            0.98f, 0.78f, 1.0f, 0.0f, // bottom right
+            0.98f, 0.98f, 1.0f, 1.0f  // top right
+        };
+
+        unsigned int psVAO, psVBO;
+        glGenVertexArrays(1, &psVAO);
+        glGenBuffers(1, &psVBO);
+        glBindVertexArray(psVAO);
+        glBindBuffer(GL_ARRAY_BUFFER, psVBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(psVertices), psVertices, GL_STATIC_DRAW);
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *)0);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *)(2 * sizeof(float)));
+        glEnableVertexAttribArray(1);
+        glBindVertexArray(0);
+
+        // texture binding
+        unsigned int pitstopIconId;
+        glGenTextures(1, &pitstopIconId);
+        glBindTexture(GL_TEXTURE_2D, pitstopIconId);
+
+        int width, height, nrChannels;
+        unsigned char *pitstopIconData = stbi_load("models/pitstop icon/pitstop-icon.jpg", &width, &height, &nrChannels, 0);
+        if (pitstopIconData)
+        {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, pitstopIconData);
+            glGenerateMipmap(GL_TEXTURE_2D);
+            stbi_image_free(pitstopIconData);
+        }
+        else
+        {
+            std::cout << "Pitstop icon texture failed to load: " << std::endl;
+            stbi_image_free(pitstopIconData);
+        }
+
+        glGenerateMipmap(GL_TEXTURE_2D);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
         // ---- chroma keying shader ----
         Shader chromaKeyShader("src/shader/chromaKey.vs", "src/shader/chromaKey.fs");
@@ -271,13 +355,13 @@ int main()
         glGenTextures(1, &CKTexture);
         glBindTexture(GL_TEXTURE_2D, CKTexture);
 
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
-        int width, height, nrChannels;
+        
         unsigned char *CKdata = stbi_load("models/chroma_keying/ChromaOverlay.png", &width, &height, &nrChannels, 0);
         if (CKdata)
         {
@@ -290,8 +374,6 @@ int main()
             std::cout << "Chroma key texture failed to load: " << std::endl;
             stbi_image_free(CKdata);
         }
-
-        
 
         // --------------------------------------------------------------
         //  RENDER LOOP
@@ -327,7 +409,7 @@ int main()
                 carSpeed = 0;
                 break;
             case 'a': // achteruit
-                carSpeed *= -0.3;
+                carSpeed *= -0.8;
                 break;
             default:
                 break;
@@ -336,7 +418,8 @@ int main()
             carT += carSpeed * deltaTime; // legacy code for past (and future) implementations
             if (carT >= (float)NUM_SEGMENTS)
                 carT -= (float)NUM_SEGMENTS;
-            distanceTravelled += glm::abs(carSpeed) * deltaTime;
+            distanceTravelled += carSpeed * deltaTime;
+            distanceTravelledAbs += glm::abs(carSpeed * deltaTime);
 
             // ---- auto positie en draai ----
             float currentTrackLength = pitstop ? pitstopCircuitLength : nbrCircuitLength;
@@ -414,6 +497,12 @@ int main()
             myShader.setMat4("model", model);
             myModel.DrawCar(myShader, steeringAngleDeg, distanceTravelled);
 
+            // ---- Draw tire stack ----
+            glm::mat4 tireStackModel = glm::mat4(1.0f);
+            tireStackModel = glm::translate(tireStackModel, tireStackPos);
+            myShader.setMat4("model", tireStackModel);
+            myTires.Draw(myShader);
+
             // ---- Draw debug path ----
             if (!hideBC)
             {
@@ -481,10 +570,28 @@ int main()
             {
                 glDisable(GL_DEPTH_TEST);
                 hud.Draw(camMode);
+
+                if (pitstop)
+                {
+                    hud.shader->use();
+
+                    hud.shader->setInt("hudTexture", 0);
+
+                    glActiveTexture(GL_TEXTURE0);
+                    glBindTexture(GL_TEXTURE_2D, pitstopIconId);
+                    glBindVertexArray(psVAO);
+                    glDrawArrays(GL_TRIANGLES, 0, 6);
+                }                
+
+                if (camMode == CAM_FREE)
+                {
+                    cursorShader.use();
+                    glBindVertexArray(cursorVAO);
+                    glDrawArrays(GL_TRIANGLES, 0, 6);
+                }
+
                 glEnable(GL_DEPTH_TEST);
             }
-
-            
 
             glfwSwapBuffers(window);
         }

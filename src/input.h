@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <../src/camera.h>
@@ -23,6 +24,10 @@ extern bool hideBC;
 extern bool chromaKeyActive;
 extern bool legacyDriving;
 
+extern glm::vec3 tireStackPos;
+
+bool clickIn = false;
+
 // -----------------------------------------------------------------------
 //  CALLBACKS
 // -----------------------------------------------------------------------
@@ -37,6 +42,43 @@ inline void mouse_callback(GLFWwindow* window, double posX, double posY)
     camera.ProcessMouse(window,
         static_cast<float>(posX),
         static_cast<float>(posY));
+}
+
+// Picking logic for pitstop
+inline void mouse_click_callback(GLFWwindow *window, int par1, int par2, int par3)
+{
+    if (!clickIn)
+    {
+        clickIn = true;
+        if (glfwWindowShouldClose(window))
+            return;
+        glm::vec3 position = camera.Position;
+        glm::vec3 front = camera.Front;
+
+        glm::vec3 stackPos = tireStackPos + glm::vec3(0.0f, 1.0f, 0.0f);
+
+        glm::vec3 lookVector = (position - front) - position;
+        glm::vec3 stackDirection = position - tireStackPos;
+
+        lookVector = glm::normalize(lookVector);
+        stackDirection = glm::normalize(stackDirection);
+
+        //std::cout << "X " << abs(stackDirection.x) - abs(lookVector.x) << "  |  Y " << abs(stackDirection.y) - abs(lookVector.y) << "   |  Z " << abs(stackDirection.z) - abs(lookVector.z) << "\n";
+
+        // toggle pitstop
+        if (abs(stackDirection.x) - abs(lookVector.x) < 0.1f && abs(stackDirection.x) - abs(lookVector.x) > -0.1f 
+        && abs(stackDirection.y) - abs(lookVector.y) < 0.1f && abs(stackDirection.y) - abs(lookVector.y) > -0.1f 
+        && abs(stackDirection.z) - abs(lookVector.z) < 0.1f && abs(stackDirection.z) - abs(lookVector.z) > -0.1f)
+        {
+            pitstop = !pitstop;
+        }
+
+        std::cout << "pitstop: " << pitstop << "\n";
+    }
+    else
+    {
+        clickIn = false;
+    }
 }
 
 // -----------------------------------------------------------------------

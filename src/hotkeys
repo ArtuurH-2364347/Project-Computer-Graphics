@@ -11,7 +11,6 @@ HOTKEYS:
         - H      =>   Toggle HUD (to be implemented)
         - C      =>   Toggle Chroma-Keying Display (to be implemented)
 
-        - P      =>   Toggle Pitstop (to be implemented)
         - O      =>   Hide/Show Other Cars (to be implemented)
         - B      =>   Hide/Show Bezier-curve (to be implemented)
 
@@ -30,6 +29,9 @@ HOTKEYS:
         - Q/D    =>   Move Left and Right
         - SHIFT  =>   Go Down (Relative, not global down)
         - SHIFT  =>   Go Up (Relative, not global up)
+
+        - Clicking the stack of tires next to 
+          the entrance of the pitstop enters pitstop mode
 
 
 
@@ -54,7 +56,6 @@ HOTKEYS - FIRST PERSON
         - G      =>   Toggle Blur Filter 
         - J      =>   Toggle Scanline Filter
 
-        - P      =>   Toggle Pitstop
         - O      =>   Hide/Show Other Cars
         - B      =>   Hide/Show Bezier-curve
 
@@ -82,13 +83,10 @@ HOTKEYS - THIRD PERSON
         - G      =>   Toggle Blur Filter 
         - J      =>   Toggle Scanline Filter
 
-        - P      =>   Toggle Pitstop
         - O      =>   Hide/Show Other Cars
         - B      =>   Hide/Show Bezier-curve
 
 *Different cameras have different settings
-
-
 
 
 
@@ -115,6 +113,9 @@ HOTKEYS - FREE CAM
         - Q/D    =>   Move Left and Right
         - SHIFT  =>   Go Down (Relative, not global down)
         - SHIFT  =>   Go Up (Relative, not global up)
+
+        - Clicking the stack of tires next to 
+          the entrance of the pitstop enters pitstop mode
 
 *Different cameras have different settings
 

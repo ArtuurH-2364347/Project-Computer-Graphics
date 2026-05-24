@@ -53,4 +53,5 @@ void main()
 
     float brightness = dot(result, vec3(0.2126, 0.7152, 0.0722));
     BrightColor = brightness > 0.7 ? vec4(result, 1.0) : vec4(0.0, 0.0, 0.0, 1.0);
+
 }

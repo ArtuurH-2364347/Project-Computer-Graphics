@@ -8,6 +8,7 @@ uniform mat4 view;
 uniform mat4 projection;
 uniform mat4 steeringLocal;
 uniform bool useSteeringLocal;
+uniform mat4 picking_id;
 
 out vec3 FragPos;
 out vec3 Normal;

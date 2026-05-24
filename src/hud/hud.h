@@ -15,14 +15,16 @@ class Hud
 {
 private:
     unsigned int hudVAO, hudVBO;
-    Shader *shader;
-
+    
     int width, height, nrChannels;
     unsigned int dataIdFree;
     unsigned int dataIdTP;
     unsigned int dataIdFP;
 
-public : 
+public :
+
+    Shader *shader;
+
     Hud()
     {
         shader = new Shader("src/hud/hud.vs", "src/hud/hud.fs");
